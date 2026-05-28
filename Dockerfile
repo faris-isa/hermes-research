@@ -4,10 +4,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-# Init plugins (overwrites content with defaults)
-RUN node quartz/bootstrap-cli.mjs create --template default --strategy new --links shortest --baseUrl quartz.jzhao.xyz
-# Restore actual content from git
-RUN git checkout -- content/
+# Initialize plugins from lock file
+RUN bash scripts/init-plugins.sh
 RUN node quartz/bootstrap-cli.mjs build
 
 FROM nginx:alpine
