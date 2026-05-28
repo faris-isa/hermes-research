@@ -3,10 +3,11 @@ RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
-# Init plugins first (creates .quartz/plugins)
-RUN node quartz/bootstrap-cli.mjs create --template default --strategy new --links shortest --baseUrl quartz.jzhao.xyz
-# Copy actual content over the defaults
 COPY . .
+# Init plugins (overwrites content with defaults)
+RUN node quartz/bootstrap-cli.mjs create --template default --strategy new --links shortest --baseUrl quartz.jzhao.xyz
+# Restore actual content from git
+RUN git checkout -- content/
 RUN node quartz/bootstrap-cli.mjs build
 
 FROM nginx:alpine
