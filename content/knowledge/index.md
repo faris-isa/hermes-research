@@ -22,6 +22,18 @@ Complete reference for Overall Equipment Effectiveness:
 - [[OEE Improvement Strategies]] — TPM, SMED, error-proofing
 - [[Common OEE Mistakes]] — Calculation pitfalls and measurement errors
 
+### [[A Philosophy of Software Design]]
+John Ousterhout's core principles for managing complexity:
+- [[Complexity and Its Symptoms]] — change amplification, cognitive load, unknown unknowns
+- [[Deep Modules]] — simple interface, powerful implementation
+- [[Information Hiding and Leakage]] — encapsulate design decisions
+- [[Pull Complexity Downwards]] — the golden rule of software design
+- [[Error Handling]] — define errors out of existence
+- [[Design Process]] — design it twice, top-down and bottom-up
+- [[Comments as Design]] — write comments first, document the why
+- [[Obvious Code]] — readability beats writability
+- [[Software Trends Critique]] — TDD, short methods, AI code generation
+
 ---
 
 *Add new topics as `content/knowledge/<topic>/index.md`*
