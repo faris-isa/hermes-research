@@ -37,6 +37,7 @@ This project implements concepts from:
 - [[Monorepo Structure]] — Turborepo workspace layout
 - [[Tech Stack Details]] — Technology choices and rationale
 - [[Packages Overview]] — Shared library documentation
+- [[System Architecture]] — How modules connect, data flow between services
 
 ## Modules
 
@@ -53,3 +54,4 @@ This project implements concepts from:
 
 - **API:** [ajinomoto-mes-api](https://github.com/molca-id/ajinomoto-mes-api)
 - **UI:** [ajinomoto-mes-repo-ui](https://github.com/molca-id/ajinomoto-mes-repo-ui)
+- **Downtime Detector:** [ajinomoto-downtime-detector-go](https://github.com/molca-id/ajinomoto-downtime-detector-go)
