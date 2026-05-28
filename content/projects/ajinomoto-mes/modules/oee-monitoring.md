@@ -158,6 +158,18 @@ apps/oee-monitoring/src/
     └── yearly-target.ts   # Target management types
 ```
 
+## Known Issues
+
+### Force-Planned Downtime on Zero Production
+
+**File:** `packages/oee/src/lib/oee/core/hierarchy/machine.ts` → `checkTotalAndForcePlannedDowntime()`
+
+**Behavior:** If a machine has zero production AND zero downtime records for the entire shift, the system force-creates a PLANNED downtime record covering the whole shift.
+
+**Problem:** This hides real availability losses. If a machine was supposed to run but nobody started it, it gets marked as PLANNED (acceptable) instead of UNPLANNED (problem). The root cause (operator not present, material not ready, etc.) becomes invisible.
+
+**Status:** Intentional for now, needs to be solved.
+
 ## Related
 - [[OEE Knowledge Index]]
 - [[System Architecture]]
