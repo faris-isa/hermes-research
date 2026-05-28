@@ -1,10 +1,13 @@
+# yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
   pageTitle: "Hermes Research"
-  pageTitleSuffix: " | Knowledge Base"
+  pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
+  analytics:
+    provider: plausible
   locale: en-US
-  baseUrl: "faris-isa.github.io/hermes-research"
+  baseUrl: quartz.jzhao.xyz
   ignorePatterns:
     - private
     - templates
@@ -89,6 +92,12 @@ plugins:
   - source: github:quartz-community/hard-line-breaks
     enabled: false
     order: 90
+  - source: github:quartz-community/ox-hugo
+    enabled: false
+    order: 91
+  - source: github:quartz-community/roam
+    enabled: false
+    order: 92
   - source: github:quartz-community/remove-draft
     enabled: true
   - source: github:quartz-community/explicit-publish
@@ -187,7 +196,8 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/faris-isa/hermes-research
+        GitHub: https://github.com/jackyzha0/quartz
+        Discord Community: https://discord.gg/cRFFHYye7t
   - source: github:quartz-community/recent-notes
     enabled: false
   - source: github:quartz-community/spacer
