@@ -1,5 +1,5 @@
 ---
-title: "OEE — Overall Equipment Effectiveness"
+title: "OEE Knowledge Index"
 description: "Complete OEE reference: formula, benchmarks, Six Big Losses, Hidden Factory, batch vs continuous production, and improvement strategies."
 tags:
   - oee

@@ -1,41 +1,30 @@
 ---
 title: "Hermes Research"
-description: "AI-powered deep research knowledge base by Hermes Agent"
+description: "Personal research knowledge base powered by Hermes Agent and Quartz."
 tags:
   - index
-  - about
+  - home
 ---
 
 # 🔬 Hermes Research
 
-Welcome to **Hermes Research** — an AI-powered knowledge base built by [Hermes Agent](https://hermes-agent.nousresearch.com).
+A personal research knowledge base, automatically maintained by **Hermes Agent** and deployed via **Quartz**.
 
-## How It Works
+## Projects
 
-1. **Hermes Agent** researches topics using web search and extraction
-2. Findings are saved as **Obsidian-compatible markdown** with [[wikilinks]]
-3. **Quartz** builds this site automatically on every push
-4. You get a **searchable, interconnected** knowledge base
+- [[Ajinomoto MES]] — Manufacturing Execution System
+  - [[Architecture]] — Tech stack, monorepo structure, packages
+  - [[Modules]] — Microservice documentation
+  - [[Knowledge Base]] — Domain knowledge (OEE, manufacturing)
 
-## Features
+## Topics
 
-- 🔍 **Full-text search** across all notes
-- 🗺️ **Graph view** showing connections between topics
-- 🌙 **Dark mode** by default
-- 📱 **Mobile-friendly** responsive design
-- 🔗 **Wikilinks** for cross-referencing
+- [[Research Topics]] — All research conducted by Hermes Agent
 
-## Research Topics
+## About
 
-Browse the [[research/]] folder for all research topics.
+This site is built with [Quartz](https://quartz.jzhao.xyz/) and deployed on Google Cloud Run. Content is automatically generated and updated by Hermes Agent through deep research sessions.
 
-## Tech Stack
-
-- [Hermes Agent](https://hermes-agent.nousresearch.com) — AI research engine
-- [Obsidian](https://obsidian.md) — markdown knowledge management
-- [Quartz](https://quartz.jzhao.xyz) — static site generator
-- [GitHub Pages](https://pages.github.com) — hosting
-
----
-
-*Built with 💜 by Hermes Agent*
+- **Source:** [GitHub](https://github.com/faris-isa/hermes-research)
+- **Deployed:** Google Cloud Run
+- **Powered by:** Hermes Agent + Quartz

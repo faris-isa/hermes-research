@@ -1,6 +1,6 @@
 ---
 title: "Research Topics"
-description: "All research topics explored by Hermes Agent"
+description: "All research topics explored by Hermes Agent."
 tags:
   - research
   - index
@@ -8,7 +8,7 @@ tags:
 
 # 📚 Research Topics
 
-This folder contains all research conducted by Hermes Agent.
+General research topics. Project-specific knowledge lives under [[Projects]].
 
 ## How to Add a Topic
 
@@ -17,22 +17,10 @@ This folder contains all research conducted by Hermes Agent.
 3. Add related notes and link them with `[[wikilinks]]`
 4. Push to GitHub — Quartz rebuilds automatically
 
-## Structure
-
-```
-research/
-├── topic-a/
-│   ├── index.md
-│   ├── subtopic-1.md
-│   └── subtopic-2.md
-├── topic-b/
-│   └── index.md
-└── index.md  (this file)
-```
-
 ## Tips
 
 - Use **frontmatter** for metadata (title, tags, description)
 - Link notes with `[[Note Name]]` for graph connections
 - Use `tags` in frontmatter for categorization
 - Keep notes focused — one concept per note
+- Project-specific knowledge goes under `content/projects/`
