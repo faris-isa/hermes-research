@@ -1,17 +1,16 @@
-# Quartz v5
+# 🔬 Hermes Research
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+AI-powered deep research knowledge base built by [Hermes Agent](https://hermes-agent.nousresearch.com).
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
+## How It Works
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+1. **Hermes Agent** researches topics using web search and extraction
+2. Findings are saved as markdown with wikilinks
+3. **Quartz** builds this site automatically
+4. You get a searchable, interconnected knowledge base
 
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
+## Tech Stack
 
-## Sponsors
-
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+- [Hermes Agent](https://hermes-agent.nousresearch.com) — AI research engine
+- [Quartz](https://quartz.jzhao.xyz) — static site generator
+- [Google Cloud Run](https://cloud.google.com/run) — hosting
