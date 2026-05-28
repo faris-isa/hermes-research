@@ -4,8 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-# Initialize plugins from lock file
-RUN bash scripts/init-plugins.sh
+# Plugins already cloned + index.ts committed — just build
 RUN node quartz/bootstrap-cli.mjs build
 
 FROM nginx:alpine
