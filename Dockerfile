@@ -3,8 +3,10 @@ RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
-COPY . .
+# Initialize plugins first (creates .quartz/plugins)
 RUN npx quartz create --template default --strategy new --links shortest --baseUrl quartz.jzhao.xyz
+# Now copy actual content (overwrites the default "Welcome to Quartz")
+COPY . .
 RUN npx quartz build
 
 FROM nginx:alpine
