@@ -1,6 +1,6 @@
 ---
 title: "OEE Knowledge Index"
-description: "Complete OEE reference: formula, benchmarks, Six Big Losses, Hidden Factory, batch vs continuous production, and improvement strategies."
+description: "Complete OEE reference: formula, benchmarks, Six Big Losses, Hidden Factory, batch vs continuous production, improvement strategies, and extended metrics."
 tags:
   - oee
   - manufacturing
@@ -53,13 +53,32 @@ Most manufacturing companies average **~55–60% OEE**. More companies are below
 
 ## Key Topics
 
+### Core Concepts
 - [[Six Big Losses]] — the six categories that eat into OEE
 - [[Hidden Factory]] — untapped capacity without capital investment
-- [[World-Class OEE and Benchmarks]] — targets, real-world data, industry comparisons
-- [[Batch vs Continuous OEE]] — how OEE differs across manufacturing types
-- [[OEE Improvement Strategies]] — TPM, SMED, error-proofing, and more
-- [[Common OEE Mistakes]] — pitfalls in calculation and measurement
 - [[OEE Calculation Deep Dive]] — simple vs preferred formulas, performance > 100% warning
+- [[Common OEE Mistakes]] — pitfalls in calculation and measurement
+
+### Manufacturing Types
+- [[Batch vs Continuous OEE]] — how OEE differs across manufacturing types
+- [[Batch OEE Deep Dive]] — batch-specific calculations and pitfalls
+
+### Improvement & Strategy
+- [[OEE Improvement Strategies]] — TPM, SMED, error-proofing, and more
+- [[World-Class OEE and Benchmarks]] — targets, real-world data, industry comparisons
+
+### Extended Metrics (Beyond OEE)
+- [[Extended OEE Metrics: TEEP, OAE, OLE]] — TEEP, OAE, OLE, PEE, OFE for 360-degree view
+- [[OEE and Theory of Constraints]] — pairing TOC bottleneck analysis with OEE
+- [[OEE and Sustainability]] — energy reduction and carbon footprint impact
+
+### Implementation
+- [[OEE Data Collection Methods]] — manual, PLC, Computer Vision, hybrid approaches
+- [[OEE Implementation Methodology]] — 4-phase approach to continuous improvement
+- [[OEE Software Landscape]] — leading platforms and selection criteria
+
+### Industry-Specific
+- [[OEE in Pharmaceutical Manufacturing]] — GMP compliance, 21 CFR Part 11, data integrity
 
 ## OEE Hierarchy
 
@@ -77,4 +96,4 @@ Each level aggregates from below, weighted by duration or quantity.
 
 ---
 
-*Reference compiled by Hermes Agent. Source: Seiichi Nakajima (TPM), Evocon, industry benchmarks.*
+*Reference compiled by Hermes Agent. Source: Seiichi Nakajima (TPM), Evocon, industry benchmarks, Symestic, Fabrico, ISSSP.*
