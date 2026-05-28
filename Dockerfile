@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+RUN npx quartz create --template default --strategy copy --links shortest --baseUrl quartz.jzhao.xyz
 RUN npx quartz build
 
 FROM nginx:alpine

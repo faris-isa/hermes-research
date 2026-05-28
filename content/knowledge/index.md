@@ -22,6 +22,21 @@ Complete reference for Overall Equipment Effectiveness:
 - [[OEE Improvement Strategies]] — TPM, SMED, error-proofing
 - [[Common OEE Mistakes]] — Calculation pitfalls and measurement errors
 
+### [[Designing Data-Intensive Applications]]
+Martin Kleppmann's definitive guide to distributed systems and data-intensive applications:
+- [[Reliable Scalable Maintainable]] — The three pillars of data system design
+- [[Data Models]] — Relational, document, and graph models
+- [[Storage and Retrieval]] — LSM-trees, B-trees, column-oriented storage
+- [[Encoding and Evolution]] — Schema evolution, Protobuf, Avro
+- [[Replication]] — Single-leader, multi-leader, leaderless replication
+- [[Partitioning]] — Key range vs hash partitioning
+- [[Transactions]] — ACID, isolation levels, MVCC
+- [[Distributed Troubles]] — Clocks, timeouts, failure detection
+- [[Consistency and Consensus]] — Linearizability, consensus algorithms
+- [[Batch Processing]] — MapReduce, Spark, dataflow engines
+- [[Stream Processing]] — Event logs, CDC, complex event processing
+- [[Future of Data Systems]] — Ethics, data as assets
+
 ### [[A Philosophy of Software Design]]
 John Ousterhout's core principles for managing complexity:
 - [[Complexity and Its Symptoms]] — change amplification, cognitive load, unknown unknowns
