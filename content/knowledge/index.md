@@ -24,18 +24,18 @@ Complete reference for Overall Equipment Effectiveness:
 
 ### [[Designing Data-Intensive Applications]]
 Martin Kleppmann's definitive guide to distributed systems and data-intensive applications:
-- [[Reliable Scalable Maintainable]] — The three pillars of data system design
-- [[Data Models]] — Relational, document, and graph models
-- [[Storage and Retrieval]] — LSM-trees, B-trees, column-oriented storage
-- [[Encoding and Evolution]] — Schema evolution, Protobuf, Avro
-- [[Replication]] — Single-leader, multi-leader, leaderless replication
-- [[Partitioning]] — Key range vs hash partitioning
-- [[Transactions]] — ACID, isolation levels, MVCC
-- [[Distributed Troubles]] — Clocks, timeouts, failure detection
-- [[Consistency and Consensus]] — Linearizability, consensus algorithms
-- [[Batch Processing]] — MapReduce, Spark, dataflow engines
-- [[Stream Processing]] — Event logs, CDC, complex event processing
-- [[Future of Data Systems]] — Ethics, data as assets
+- [[Part 01 — Reliable, Scalable, Maintainable]] — The three pillars of data system design
+- [[Part 02 — Data Models and Query Languages]] — Relational, document, and graph models
+- [[Part 03 — Storage and Retrieval]] — LSM-trees, B-trees, column-oriented storage
+- [[Part 04 — Encoding and Evolution]] — Schema evolution, Protobuf, Avro
+- [[Part 05 — Replication]] — Single-leader, multi-leader, leaderless replication
+- [[Part 06 — Partitioning]] — Key range vs hash partitioning
+- [[Part 07 — Transactions]] — ACID, isolation levels, MVCC
+- [[Part 08 — The Trouble with Distributed Systems]] — Clocks, timeouts, failure detection
+- [[Part 09 — Consistency and Consensus]] — Linearizability, consensus algorithms
+- [[Part 10 — Batch Processing]] — MapReduce, Spark, dataflow engines
+- [[Part 11 — Stream Processing]] — Event logs, CDC, complex event processing
+- [[Part 12 — The Future of Data Systems]] — Ethics, data as assets
 
 ### [[A Philosophy of Software Design]]
 John Ousterhout's core principles for managing complexity:

@@ -18,24 +18,24 @@ tags:
 
 ### Part I: Foundations of Data Systems
 
-- [[Reliable Scalable Maintainable]] — The three pillars of data system design
-- [[Data Models]] — Relational, document, and graph models
-- [[Storage and Retrieval]] — LSM-trees, B-trees, column-oriented storage
-- [[Encoding and Evolution]] — Schema evolution, Protobuf, Avro, compatibility
+- [[Part 01 — Reliable, Scalable, Maintainable]] — The three pillars of data system design
+- [[Part 02 — Data Models and Query Languages]] — Relational, document, and graph models
+- [[Part 03 — Storage and Retrieval]] — LSM-trees, B-trees, column-oriented storage
+- [[Part 04 — Encoding and Evolution]] — Schema evolution, Protobuf, Avro, compatibility
 
 ### Part II: Distributed Data
 
-- [[Replication]] — Single-leader, multi-leader, leaderless replication
-- [[Partitioning]] — Key range vs hash partitioning, secondary indexes
-- [[Transactions]] — ACID, isolation levels, MVCC, 2PL
-- [[Distributed Troubles]] — Clocks, timeouts, failure detection
-- [[Consistency and Consensus]] — Linearizability, consensus algorithms
+- [[Part 05 — Replication]] — Single-leader, multi-leader, leaderless replication
+- [[Part 06 — Partitioning]] — Key range vs hash partitioning, secondary indexes
+- [[Part 07 — Transactions]] — ACID, isolation levels, MVCC, 2PL
+- [[Part 08 — The Trouble with Distributed Systems]] — Clocks, timeouts, failure detection
+- [[Part 09 — Consistency and Consensus]] — Linearizability, consensus algorithms
 
 ### Part III: Derived Data
 
-- [[Batch Processing]] — MapReduce, Spark, dataflow engines
-- [[Stream Processing]] — Event logs, change data capture, complex event processing
-- [[Future of Data Systems]] — Ethical considerations, data as assets
+- [[Part 10 — Batch Processing]] — MapReduce, Spark, dataflow engines
+- [[Part 11 — Stream Processing]] — Event logs, change data capture, complex event processing
+- [[Part 12 — The Future of Data Systems]] — Ethical considerations, data as assets
 
 ## Key Principles
 
@@ -60,11 +60,11 @@ Understanding DDIA concepts directly applies to the [[Ajinomoto MES]]:
 
 | DDIA Concept | MES Application |
 |-------------|-----------------|
-| [[Replication]] | Cassandra replication for downtime data |
-| [[Partitioning]] | Time-based partitioning in InfluxDB |
-| [[Storage and Retrieval]] | Cassandra's LSM-tree storage engine |
-| [[Stream Processing]] | Kafka → Downtime Detector |
-| [[Batch Processing]] | OEE report generation |
+| [[Part 05 — Replication]] | Cassandra replication for downtime data |
+| [[Part 06 — Partitioning]] | Time-based partitioning in InfluxDB |
+| [[Part 03 — Storage and Retrieval]] | Cassandra's LSM-tree storage engine |
+| [[Part 11 — Stream Processing]] | Kafka → Downtime Detector |
+| [[Part 10 — Batch Processing]] | OEE report generation |
 
 ## Related
 - [[Ajinomoto MES]]
