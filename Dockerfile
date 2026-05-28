@@ -4,10 +4,10 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 # Init plugins first (creates .quartz/plugins)
-RUN ./node_modules/.bin/quartz create --template default --strategy new --links shortest --baseUrl quartz.jzhao.xyz
+RUN node quartz/bootstrap-cli.mjs create --template default --strategy new --links shortest --baseUrl quartz.jzhao.xyz
 # Copy actual content over the defaults
 COPY . .
-RUN ./node_modules/.bin/quartz build
+RUN node quartz/bootstrap-cli.mjs build
 
 FROM nginx:alpine
 COPY --from=build /app/public /usr/share/nginx/html
