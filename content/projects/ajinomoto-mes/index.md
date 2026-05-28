@@ -1,6 +1,6 @@
 ---
 title: "Ajinomoto MES"
-description: "Manufacturing Execution System — architecture, modules, and domain knowledge for Ajinomoto production."
+description: "Manufacturing Execution System — architecture, modules, and how it applies domain knowledge."
 tags:
   - ajinomoto
   - mes
@@ -10,7 +10,7 @@ tags:
 
 # Ajinomoto MES
 
-A **Manufacturing Execution System** built as a TypeScript monorepo using Turborepo, serving Ajomoto's factory operations.
+A **Manufacturing Execution System** built as a TypeScript monorepo using Turborepo, serving Ajinomoto's factory operations.
 
 ## Tech Stack
 
@@ -24,66 +24,32 @@ A **Manufacturing Execution System** built as a TypeScript monorepo using Turbor
 | Queue | Custom queue package |
 | Build | Turborepo |
 
-## Project Structure
+## Domain Knowledge Applied
 
-```
-ajinomoto-mes-api/
-├── apps/                    # Microservices
-│   ├── oee-monitoring/      # OEE tracking & reporting
-│   ├── shopfloor/           # Shopfloor management
-│   ├── master-data/         # Master data management
-│   ├── guideline/           # Guideline management
-│   ├── schedule-maintenance/# Maintenance scheduling
-│   ├── job-schedule/        # Job scheduling
-│   ├── scheduler/           # Scheduler service
-│   ├── worker/              # Background worker
-│   └── seeder/              # Database seeder
-├── packages/                # Shared libraries
-│   ├── oee/                 # OEE calculation engine
-│   ├── drizzle/             # Database ORM config
-│   ├── schema/              # Database schema
-│   ├── influx/              # InfluxDB client
-│   ├── cassandra/           # Cassandra client
-│   ├── queue/               # Queue management
-│   ├── redis/               # Redis client
-│   ├── hono/                # HTTP framework extensions
-│   ├── config/              # Configuration management
-│   ├── constant/            # Shared constants
-│   └── util/                # Utility functions
-└── tools/                   # Dev tooling
-```
+This project implements concepts from:
 
-## Documentation
+- [[OEE Knowledge Index]] — [[OEE Monitoring]] module applies the [[Six Big Losses]], [[OEE Calculation Deep Dive|A×P×Q formula]], and [[Hidden Factory]] concepts
+- [[Batch vs Continuous OEE]] — Handles both batch and continuous production lines
+- [[OEE Improvement Strategies]] — [[Schedule Maintenance]] module supports TPM workflows
 
-### [[Architecture]]
+## Architecture
+
 - [[Monorepo Structure]] — Turborepo workspace layout
 - [[Tech Stack Details]] — Technology choices and rationale
 - [[Packages Overview]] — Shared library documentation
 
-### [[Modules]]
-- [[OEE Monitoring]] — OEE tracking, reporting, and targets
-- [[Shopfloor]] — Shopfloor management and real-time monitoring
-- [[Master Data]] — Product, machine, and line configuration
-- [[Guideline]] — Standard operating procedures
-- [[Schedule Maintenance]] — Preventive and corrective maintenance
-- [[Job Schedule]] — Automated job scheduling
+## Modules
 
-### [[Knowledge]]
-- [[OEE Knowledge Index]] — Complete OEE reference (formulas, benchmarks, strategies)
-  - [[Six Big Losses]]
-  - [[Hidden Factory]]
-  - [[World-Class OEE and Benchmarks]]
-  - [[Batch vs Continuous OEE]]
-  - [[OEE Improvement Strategies]]
-  - [[Common OEE Mistakes]]
-  - [[OEE Calculation Deep Dive]]
-  - [[Batch OEE Deep Dive]]
+| Module | Purpose |
+|--------|---------|
+| [[OEE Monitoring]] | OEE tracking, reporting, yearly targets |
+| [[Shopfloor]] | Real-time shopfloor operations |
+| [[Master Data]] | Product, machine, and line configuration |
+| [[Guideline]] | Standard operating procedures |
+| [[Schedule Maintenance]] | Preventive and corrective maintenance |
+| [[Job Schedule]] | Automated job scheduling |
 
 ## Repos
 
 - **API:** [ajinomoto-mes-api](https://github.com/molca-id/ajinomoto-mes-api)
 - **UI:** [ajinomoto-mes-repo-ui](https://github.com/molca-id/ajinomoto-mes-repo-ui)
-
----
-
-*This project is maintained by Molca team.*

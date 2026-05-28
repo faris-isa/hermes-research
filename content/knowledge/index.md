@@ -1,14 +1,13 @@
 ---
 title: "Knowledge Base"
-description: "Domain knowledge and technical references for Ajinomoto MES."
+description: "Domain knowledge and technical references."
 tags:
-  - ajinomoto
   - knowledge
 ---
 
-# Knowledge Base
+# 📚 Knowledge Base
 
-Domain knowledge and technical references compiled for the [[Ajinomoto MES]] project.
+Domain knowledge and technical references. These are **standalone concepts** — not tied to any specific project.
 
 ## Topics
 
@@ -25,4 +24,4 @@ Complete reference for Overall Equipment Effectiveness:
 
 ---
 
-*Knowledge is power. Data without understanding is just noise.*
+*Add new topics as `content/knowledge/<topic>/index.md`*
