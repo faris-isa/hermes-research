@@ -1,8 +1,9 @@
-FROM node:22-alpine AS build
+FROM node:22-slim AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+RUN npx quartz plugin install
 RUN npx quartz build
 
 FROM nginx:alpine
