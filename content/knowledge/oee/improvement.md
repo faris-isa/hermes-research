@@ -128,6 +128,21 @@ Your system needs:
 | 4. Elevate the constraint | If bottleneck OEE still limits throughput, invest in capacity |
 | 5. Repeat | Find new bottleneck, restart cycle |
 
+```mermaid
+graph LR
+    S1["1️⃣ Identify<br/>Constraint"] --> S2["2️⃣ Exploit<br/>Constraint"]
+    S2 --> S3["3️⃣ Subordinate<br/>Everything"]
+    S3 --> S4["4️⃣ Elevate<br/>Constraint"]
+    S4 --> S5["5️⃣ Repeat<br/>(Don't Let Inertia Set In)"]
+    S5 -.->|"New bottleneck found"| S1
+
+    style S1 fill:#dc3545,stroke:#c82333,color:#fff
+    style S2 fill:#fd7e14,stroke:#e67e00,color:#fff
+    style S3 fill:#ffc107,stroke:#e0a800
+    style S4 fill:#28a745,stroke:#155724,color:#fff
+    style S5 fill:#17a2b8,stroke:#138496,color:#fff
+```
+
 > **Key insight:** Improving OEE at non-bottleneck machines **does not increase throughput** — it only creates excess inventory. Focus OEE improvement efforts on the constraint first.
 
 **Practical example:** A bottling line has 5 machines. Filler OEE = 72%, Labeler OEE = 89%, Capper OEE = 91%, Packer OEE = 85%, Palletizer OEE = 94%. The filler is the bottleneck. Improving the labeler from 89% to 95% does nothing for line throughput — parts just queue before the filler. Improving the filler from 72% to 80% increases total line output.

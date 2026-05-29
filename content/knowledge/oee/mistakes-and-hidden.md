@@ -26,6 +26,33 @@ The Six Big Losses framework categorizes all production losses into three groups
 | 5 | Process Defects | Quality Loss | Quality |
 | 6 | Reduced Yield | Quality Loss | Quality |
 
+```mermaid
+graph TD
+    OEE["🎯 OEE = A × P × Q"] --> A["📊 Availability"]
+    OEE --> P["📊 Performance"]
+    OEE --> Q["📊 Quality"]
+
+    A --> A1["1️⃣ Equipment Failure<br/>(Unplanned Stop)"]
+    A --> A2["2️⃣ Setup & Adjustment<br/>(Planned Stop)"]
+
+    P --> P1["3️⃣ Idling & Minor Stops<br/>(Speed Loss)"]
+    P --> P2["4️⃣ Reduced Speed<br/>(Speed Loss)"]
+
+    Q --> Q1["5️⃣ Process Defects<br/>(Quality Loss)"]
+    Q --> Q2["6️⃣ Reduced Yield<br/>(Quality Loss)"]
+
+    style OEE fill:#28a745,stroke:#155724,color:#fff
+    style A fill:#dc3545,stroke:#c82333,color:#fff
+    style P fill:#fd7e14,stroke:#e67e00,color:#fff
+    style Q fill:#6f42c1,stroke:#5a32a3,color:#fff
+    style A1 fill:#f8d7da,stroke:#721c24
+    style A2 fill:#f8d7da,stroke:#721c24
+    style P1 fill:#fff3cd,stroke:#856404
+    style P2 fill:#fff3cd,stroke:#856404
+    style Q1 fill:#e2d9f3,stroke:#5a32a3
+    style Q2 fill:#e2d9f3,stroke:#5a32a3
+```
+
 ### Availability Losses — When Equipment Stops
 
 **1. Equipment Failure (Unplanned Stop)**

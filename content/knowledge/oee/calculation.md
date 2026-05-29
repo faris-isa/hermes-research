@@ -11,6 +11,31 @@ tags:
 
 There isn't one way to calculate OEE. There are several, and choosing the wrong one produces numbers that look precise but mean nothing.
 
+## Which Formula Should I Use?
+
+```mermaid
+graph TD
+    Q1{"What does your<br/>process produce?"}
+    Q1 -->|"Individual units"| D["Discrete Manufacturing<br/>Performance = ICT × Count / RunTime"]
+    Q1 -->|"Groups via recipe"| Q2{"Do you track<br/>recipe phases?"}
+    Q1 -->|"Continuous flow<br/>(kg/hr, L/hr)"| C["Continuous Manufacturing<br/>Performance = ActualRate / DesignRate"]
+    Q2 -->|"Yes"| B3["Batch — Phase-Based<br/>Performance = Σ(IdealPhase) / Σ(ActualPhase)"]
+    Q2 -->|"No"| Q3{"Does batch size<br/>vary significantly?"}
+    Q3 -->|"Yes"| B2["Batch — Ideal Cycle Time<br/>Performance = ICT × Quantity / NetRunTime"]
+    Q3 -->|"No"| B1["Batch — Ideal Duration<br/>Performance = IdealDuration / RunDuration"]
+
+    style Q1 fill:#fff3cd,stroke:#856404
+    style Q2 fill:#fff3cd,stroke:#856404
+    style Q3 fill:#fff3cd,stroke:#856404
+    style D fill:#d1ecf1,stroke:#0c5460
+    style B1 fill:#d4edda,stroke:#155724
+    style B2 fill:#d4edda,stroke:#155724
+    style B3 fill:#d4edda,stroke:#155724
+    style C fill:#e3e3e3,stroke:#333
+```
+
+> **Tip:** When in doubt, use Method 2 (Ideal Cycle Time × Total Count). It works for most batch and discrete processes.
+
 ## The Two Formulas
 
 ### Simple (Single Calculation)
