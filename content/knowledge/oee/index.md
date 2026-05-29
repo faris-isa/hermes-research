@@ -1,16 +1,17 @@
 ---
-title: "OEE Knowledge Index"
-description: "Complete OEE reference: formula, benchmarks, Six Big Losses, Hidden Factory, batch vs continuous production, improvement strategies, and extended metrics."
+title: "OEE — Overall Equipment Effectiveness"
+description: "What OEE actually is, the formula, world-class targets, and why hierarchy doesn't apply uniformly."
 tags:
   - oee
   - manufacturing
   - mes
-  - factory
 ---
 
 # OEE — Overall Equipment Effectiveness
 
-**OEE** is the gold-standard metric for measuring manufacturing productivity. It shows how close a factory gets to perfect production — producing only good parts, as fast as possible, with no downtime.
+**OEE measures how close a factory gets to perfect production.** Not how busy it looks. Not how many hours the lights are on. How many *good parts* came out, at *full speed*, with *zero downtime*.
+
+That's the promise. The reality is messier.
 
 ## The Formula
 
@@ -18,25 +19,31 @@ tags:
 OEE = Availability × Performance × Quality
 ```
 
-| Metric | Formula | What It Measures |
-|--------|---------|------------------|
-| **Availability** | `runTime / plannedProductionTime` | Downtime losses |
-| **Performance** | `(idealCycleTime × totalCount) / runTime` | Speed losses |
-| **Quality** | `goodCount / totalCount` | Defect losses |
+| Factor | Formula | What It Actually Measures |
+|--------|---------|--------------------------|
+| **Availability** | `runTime / plannedProductionTime` | Did the machine stop when it shouldn't have? |
+| **Performance** | `(idealCycleTime × totalCount) / runTime` | Did it run as fast as it should have? |
+| **Quality** | `goodCount / totalCount` | Were the parts actually good? |
 
-## Time Waterfall
+Each factor captures a different *kind* of loss. Together they tell you how much of your theoretical capacity turned into revenue.
+
+## The Time Waterfall
+
+Every second of calendar time flows through this waterfall. Losses accumulate at each level:
 
 ```
 Calendar Time
-  → -Schedule Loss
+  → - Schedule Loss (nights, weekends, no orders)
   = Planned Production Time
-    → -Availability Loss
+    → - Availability Loss (breakdowns, changeovers)
     = Run Time
-      → -Performance Loss
+      → - Performance Loss (slow cycles, minor stops)
       = Net Run Time
-        → -Quality Loss
+        → - Quality Loss (defects, scrap, rework)
         = Fully Productive Time → Good Output
 ```
+
+> **For developers:** This waterfall is your data model. Each transition is a state change. Your system needs to track *when* each transition happened and *why*. The "why" is where the real value lives.
 
 ## World-Class Targets
 
@@ -47,53 +54,55 @@ Calendar Time
 | Quality | 99.9% |
 | **OEE** | **85%** |
 
-> Even achieving 90% in ALL three factors yields only **73% OEE** (0.9³). The 85% target is extremely ambitious.
+**Origin:** Seiichi Nakajima, *Introduction to TPM* (1984). Companies winning Japan's Distinguished Plant Prize for TPM had OEE exceeding 85%.
 
-Most manufacturing companies average **~55–60% OEE**. More companies are below 45% than above 85%.
+**The math reality check:** Achieving 90% in ALL three factors yields only **73% OEE** (0.9³). The 85% target requires near-perfection in at least one factor. Most manufacturing companies average **55–60% OEE**. More companies are below 45% than above 85%.
 
-## Key Topics
+> **Developer opinion:** Don't treat 85% as a universal target. It was derived from specific Japanese automotive plants in the 1980s. Your context matters more — see [[Manufacturing Types]].
 
-### Core Concepts
-- [[Six Big Losses]] — the six categories that eat into OEE
-- [[Hidden Factory]] — untapped capacity without capital investment
-- [[OEE Calculation Deep Dive]] — simple vs preferred formulas, performance > 100% warning
-- [[Common OEE Mistakes]] — pitfalls in calculation and measurement
+## Why OEE Matters Financially
 
-### Manufacturing Types
-- [[Batch vs Continuous OEE]] — how OEE differs across manufacturing types
-- [[Batch OEE Deep Dive]] — batch-specific calculations and pitfalls
+Every percentage point of OEE translates directly to capacity:
 
-### Improvement & Strategy
-- [[OEE Improvement Strategies]] — TPM, SMED, error-proofing, and more
-- [[World-Class OEE and Benchmarks]] — targets, real-world data, industry comparisons
+- A factory running 24/7 with 60% OEE has the **same output** as a 24/7 factory at 100% OEE running only **14.4 hours/day**
+- Improving OEE from 60% to 75% is equivalent to **adding 25% more capacity** — without buying a single machine
+- For a line producing $10M/year, a 5% OEE improvement = **$500K–$1M in recovered capacity**
 
-### Extended Metrics (Beyond OEE)
-- [[Extended OEE Metrics: TEEP, OAE, OLE]] — TEEP, OAE, OLE, PEE, OFE for 360-degree view
-- [[OEE and Theory of Constraints]] — pairing TOC bottleneck analysis with OEE
-- [[OEE and Sustainability]] — energy reduction and carbon footprint impact
+> **For developers:** When building dashboards, always show the financial equivalent. "OEE improved 3%" means nothing to a CFO. "We recovered $300K in capacity this quarter" means everything.
 
-### Implementation
-- [[OEE Data Collection Methods]] — manual, PLC, Computer Vision, hybrid approaches
-- [[OEE Implementation Methodology]] — 4-phase approach to continuous improvement
-- [[OEE Software Landscape]] — leading platforms and selection criteria
+## The Hierarchy Problem
 
-### Industry-Specific
-- [[OEE in Pharmaceutical Manufacturing]] — GMP compliance, 21 CFR Part 11, data integrity
-
-## OEE Hierarchy
-
+```
 Machine (per shift) → Line (per shift) → Area → Plant
+```
 
-Each level aggregates from below, weighted by duration or quantity.
+This looks clean. It's not.
+
+**Hierarchy does not apply uniformly.** Not every concept works the same way across all situations:
+
+- Aggregation methods depend on your manufacturing type
+- Weighting by duration works for shifts, fails for batch processes
+- Averaging station OEE for a sequential line is **mathematically wrong**
+- Plant-level OEE can hide machine-level problems
+
+> **The core insight:** OEE is not one number that means the same thing everywhere. How you calculate, aggregate, and interpret it depends entirely on context. See [[Calculation Methods]] for the details.
 
 ## Quick Rules
 
 1. **Never look at OEE alone** — always check A, P, Q individually
 2. **Use design speed**, not historical average, for Ideal Cycle Time
 3. **First Pass Yield** — reworked parts count as quality loss
-4. **Performance > 100%** means Ideal Cycle Time is wrong
+4. **Performance > 100%** means your Ideal Cycle Time is wrong
 5. **Compare similar processes only** — don't benchmark dissimilar lines
+
+## What's Next
+
+- [[Calculation Methods]] — Multiple ways to calculate OEE, and why it matters
+- [[Manufacturing Types]] — How discrete, batch, continuous, and HMLV change everything
+- [[Mistakes and Hidden Factory]] — Where the real value is
+- [[Improvement]] — What to do after you find the problems
+- [[Extended Metrics]] — TEEP, OAE, OLE — when OEE isn't enough
 
 ---
 
-*Reference compiled by Hermes Agent. Source: Seiichi Nakajima (TPM), Evocon, industry benchmarks, Symestic, Fabrico, ISSSP.*
+*Source: Seiichi Nakajima (TPM), Evocon (3,500+ machines, 50+ countries), industry benchmarks.*
