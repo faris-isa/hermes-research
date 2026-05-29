@@ -23,14 +23,6 @@ graph TD
     
     OAE["📊 OAE<br/>Entire Production System"] -.->|"System-level losses"| OEE
     OLE["📊 OLE<br/>Workforce Performance"] -.->|"Human factors"| OEE
-
-    style TEEP fill:#dc3545,stroke:#c82333,color:#fff
-    style OEE fill:#28a745,stroke:#155724,color:#fff
-    style OAE fill:#fd7e14,stroke:#e67e00,color:#fff
-    style OLE fill:#6f42c1,stroke:#5a32a3,color:#fff
-    style A fill:#d4edda,stroke:#155724
-    style P fill:#d4edda,stroke:#155724
-    style Q fill:#d4edda,stroke:#155724
 ```
 
 > **Think of it this way:** OEE tells you how well the machine runs when it's supposed to. TEEP tells you how much of the calendar you're actually using. OAE tells you if the whole system is working. OLE tells you if the people are effective.

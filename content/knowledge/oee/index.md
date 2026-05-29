@@ -37,12 +37,6 @@ graph TD
     B -->|"− Availability Loss<br/>(breakdowns, changeovers)"| C["⚙️ Run Time"]
     C -->|"− Performance Loss<br/>(slow cycles, minor stops)"| D["⏱️ Net Run Time"]
     D -->|"− Quality Loss<br/>(defects, scrap, rework)"| E["✅ Fully Productive Time<br/>→ Good Output"]
-
-    style A fill:#e3e3e3,stroke:#333
-    style B fill:#fff3cd,stroke:#856404
-    style C fill:#d1ecf1,stroke:#0c5460
-    style D fill:#d4edda,stroke:#155724
-    style E fill:#28a745,stroke:#155724,color:#fff
 ```
 
 > **For developers:** This waterfall is your data model. Each transition is a state change. Your system needs to track *when* each transition happened and *why*. The "why" is where the real value lives.
@@ -84,11 +78,6 @@ graph LR
     M["🔧 Machine<br/>(per shift)"] --> L["📏 Line<br/>(per shift)"]
     L --> A["🏭 Area"]
     A --> P["🏢 Plant"]
-
-    style M fill:#d1ecf1,stroke:#0c5460
-    style L fill:#d4edda,stroke:#155724
-    style A fill:#fff3cd,stroke:#856404
-    style P fill:#f8d7da,stroke:#721c24
 ```
 
 This looks clean. It's not.
@@ -121,13 +110,6 @@ graph LR
     S3 --> S4["4️⃣ Mistakes<br/>What goes wrong"]
     S4 --> S5["5️⃣ Improvement<br/>How to fix it"]
     S5 --> S6["6️⃣ Extended<br/>Beyond OEE"]
-
-    style S1 fill:#28a745,stroke:#155724,color:#fff
-    style S2 fill:#17a2b8,stroke:#138496,color:#fff
-    style S3 fill:#fd7e14,stroke:#e67e00,color:#fff
-    style S4 fill:#dc3545,stroke:#c82333,color:#fff
-    style S5 fill:#6f42c1,stroke:#5a32a3,color:#fff
-    style S6 fill:#6c757d,stroke:#545b62,color:#fff
 ```
 
 1. [[OEE — Overall Equipment Effectiveness|1. OEE Concept]] — What it is, the formula, world-class targets

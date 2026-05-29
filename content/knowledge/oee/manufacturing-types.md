@@ -231,12 +231,6 @@ graph LR
     BAT --> ASM["🔗 Assembly<br/>Variable"]
     ASM --> CON["🌊 Continuous<br/>70–85%"]
     end
-
-    style HMLV fill:#f8d7da,stroke:#721c24
-    style DIS fill:#fff3cd,stroke:#856404
-    style BAT fill:#d1ecf1,stroke:#0c5460
-    style ASM fill:#d4edda,stroke:#155724
-    style CON fill:#28a745,stroke:#155724,color:#fff
 ```
 
 | Aspect | Continuous | Batch | Discrete | HMLV |

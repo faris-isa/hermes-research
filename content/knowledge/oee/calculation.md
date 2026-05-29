@@ -23,15 +23,6 @@ graph TD
     Q2 -->|"No"| Q3{"Does batch size<br/>vary significantly?"}
     Q3 -->|"Yes"| B2["Batch — Ideal Cycle Time<br/>Performance = ICT × Quantity / NetRunTime"]
     Q3 -->|"No"| B1["Batch — Ideal Duration<br/>Performance = IdealDuration / RunDuration"]
-
-    style Q1 fill:#fff3cd,stroke:#856404
-    style Q2 fill:#fff3cd,stroke:#856404
-    style Q3 fill:#fff3cd,stroke:#856404
-    style D fill:#d1ecf1,stroke:#0c5460
-    style B1 fill:#d4edda,stroke:#155724
-    style B2 fill:#d4edda,stroke:#155724
-    style B3 fill:#d4edda,stroke:#155724
-    style C fill:#e3e3e3,stroke:#333
 ```
 
 > **Tip:** When in doubt, use Method 2 (Ideal Cycle Time × Total Count). It works for most batch and discrete processes.
