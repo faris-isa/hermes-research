@@ -1,6 +1,6 @@
 ---
 title: "OEE Knowledge Index"
-description: "Complete OEE reference: formula, benchmarks, Six Big Losses, Hidden Factory, batch vs continuous production, improvement strategies, and extended metrics."
+description: "Complete OEE reference for developers building manufacturing systems — from concept to calculation to aggregation."
 tags:
   - oee
   - manufacturing
@@ -12,88 +12,31 @@ tags:
 
 **OEE** is the gold-standard metric for measuring manufacturing productivity. It shows how close a factory gets to perfect production — producing only good parts, as fast as possible, with no downtime.
 
-## The Formula
+This knowledge base is for **developers and engineers building manufacturing systems** — MES, OEE calculators, shopfloor dashboards, downtime detectors. It covers what OEE is, how to calculate it correctly, where the pitfalls are, and how to aggregate it across machines and lines.
 
-```
-OEE = Availability × Performance × Quality
-```
+## The Flow
 
-| Metric | Formula | What It Measures |
-|--------|---------|------------------|
-| **Availability** | `runTime / plannedProductionTime` | Downtime losses |
-| **Performance** | `(idealCycleTime × totalCount) / runTime` | Speed losses |
-| **Quality** | `goodCount / totalCount` | Defect losses |
+### 1. [[OEE Concept and Interpretation]]
+What OEE is, where it came from (Nakajima/TPM), the three factors, world-class targets, and why 85% is extremely ambitious.
 
-## Time Waterfall
+### 2. [[OEE Calculation Methods]]
+How to calculate OEE — simple formula, A×P×Q, the time waterfall, and the rules you must follow.
 
-```
-Calendar Time
-  → -Schedule Loss
-  = Planned Production Time
-    → -Availability Loss
-    = Run Time
-      → -Performance Loss
-      = Net Run Time
-        → -Quality Loss
-        = Fully Productive Time → Good Output
-```
+### 3. [[Manufacturing Types and Industry Implementation]]
+How OEE differs across discrete, batch, continuous, assembly, HMLV, and hybrid manufacturing — with industry-specific notes.
 
-## World-Class Targets
+### 4. [[Common Mistakes and Hidden Factory]]
+The Hidden Factory concept, the Six Big Losses in detail, and the 8 calculation mistakes that will break your system.
 
-| Factor | Target |
-|--------|--------|
-| Availability | 90% |
-| Performance | 95% |
-| Quality | 99.9% |
-| **OEE** | **85%** |
+### 5. [[OEE Improvement Strategies]]
+TPM, SMED, Poka-Yoke, and why the OEE Drop happens when you switch to automatic measurement.
 
-> Even achieving 90% in ALL three factors yields only **73% OEE** (0.9³). The 85% target is extremely ambitious.
+### 6. [[Extended Metrics Beyond OEE]]
+TEEP, OAE, OLE — when OEE isn't enough and you need the full picture.
 
-Most manufacturing companies average **~55–60% OEE**. More companies are below 45% than above 85%.
-
-## Key Topics
-
-### Core Concepts
-- [[Six Big Losses]] — the six categories that eat into OEE
-- [[Hidden Factory]] — untapped capacity without capital investment
-- [[OEE Calculation Deep Dive]] — simple vs preferred formulas, performance > 100% warning
-- [[Common OEE Mistakes]] — pitfalls in calculation and measurement
-
-### Manufacturing Types
-- [[Batch vs Continuous OEE]] — how OEE differs across manufacturing types
-- [[Batch OEE Deep Dive]] — batch-specific calculations and pitfalls
-
-### Improvement & Strategy
-- [[OEE Improvement Strategies]] — TPM, SMED, error-proofing, and more
-- [[World-Class OEE and Benchmarks]] — targets, real-world data, industry comparisons
-
-### Extended Metrics (Beyond OEE)
-- [[Extended OEE Metrics: TEEP, OAE, OLE]] — TEEP, OAE, OLE, PEE, OFE for 360-degree view
-- [[OEE and Theory of Constraints]] — pairing TOC bottleneck analysis with OEE
-- [[OEE and Sustainability]] — energy reduction and carbon footprint impact
-
-### Implementation
-- [[OEE Data Collection Methods]] — manual, PLC, Computer Vision, hybrid approaches
-- [[OEE Implementation Methodology]] — 4-phase approach to continuous improvement
-- [[OEE Software Landscape]] — leading platforms and selection criteria
-
-### Industry-Specific
-- [[OEE in Pharmaceutical Manufacturing]] — GMP compliance, 21 CFR Part 11, data integrity
-
-## OEE Hierarchy
-
-Machine (per shift) → Line (per shift) → Area → Plant
-
-Each level aggregates from below, weighted by duration or quantity.
-
-## Quick Rules
-
-1. **Never look at OEE alone** — always check A, P, Q individually
-2. **Use design speed**, not historical average, for Ideal Cycle Time
-3. **First Pass Yield** — reworked parts count as quality loss
-4. **Performance > 100%** means Ideal Cycle Time is wrong
-5. **Compare similar processes only** — don't benchmark dissimilar lines
+### 7. [[OEE Hierarchy and Aggregation]]
+How to aggregate OEE from machine to line to plant — and why simple averaging is wrong.
 
 ---
 
-*Reference compiled by Hermes Agent. Source: Seiichi Nakajima (TPM), Evocon, industry benchmarks, Symestic, Fabrico, ISSSP.*
+*Reference compiled by Hermes Agent. Source: Seiichi Nakajima (TPM), Evocon, industry benchmarks.*
