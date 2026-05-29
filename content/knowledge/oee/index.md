@@ -1,5 +1,5 @@
 ---
-title: "OEE — Overall Equipment Effectiveness"
+title: "1. OEE — Overall Equipment Effectiveness"
 description: "What OEE actually is, the formula, world-class targets, and why hierarchy doesn't apply uniformly."
 tags:
   - oee
@@ -7,7 +7,7 @@ tags:
   - mes
 ---
 
-# OEE — Overall Equipment Effectiveness
+# 1. OEE — Overall Equipment Effectiveness
 
 **OEE measures how close a factory gets to perfect production.** Not how busy it looks. Not how many hours the lights are on. How many *good parts* came out, at *full speed*, with *zero downtime*.
 
@@ -100,13 +100,18 @@ This looks clean. It's not.
 4. **Performance > 100%** means your Ideal Cycle Time is wrong
 5. **Compare similar processes only** — don't benchmark dissimilar lines
 
-## What's Next
+## Reading Order
 
-- [[Calculation Methods]] — Multiple ways to calculate OEE, and why it matters
-- [[Manufacturing Types]] — How discrete, batch, continuous, and HMLV change everything
-- [[Mistakes and Hidden Factory]] — Where the real value is
-- [[Improvement]] — What to do after you find the problems
-- [[Extended Metrics]] — TEEP, OAE, OLE — when OEE isn't enough
+This knowledge base is designed to be read in order. Each section builds on the previous one:
+
+1. [[OEE — Overall Equipment Effectiveness|1. OEE Concept]] — What it is, the formula, world-class targets
+2. [[Calculation Methods|2. Calculation Methods]] — Multiple ways to calculate, and why it matters
+3. [[Manufacturing Types|3. Manufacturing Types]] — How context changes everything
+4. [[Mistakes and Hidden Factory|4. Mistakes and Hidden Factory]] — Where the real value is
+5. [[Improvement|5. Improvement]] — What to do after you find the problems
+6. [[Extended Metrics|6. Extended Metrics]] — TEEP, OAE, OLE — when OEE isn't enough
+
+> **Tip:** If you're building an OEE system, read 1–3 first. If you're debugging bad OEE numbers, skip to 4. If you need to justify OEE investment, start with the financial section above.
 
 ---
 

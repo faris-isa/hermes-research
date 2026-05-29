@@ -1,5 +1,5 @@
 ---
-title: "Mistakes and Hidden Factory"
+title: "4. Mistakes and Hidden Factory"
 description: "The Six Big Losses, Hidden Factory, and common OEE mistakes — where the real value is."
 tags:
   - oee
@@ -9,7 +9,7 @@ tags:
   - manufacturing
 ---
 
-# Mistakes and Hidden Factory
+# 4. Mistakes and Hidden Factory
 
 This is where the real value is. Not in the formula — everyone knows the formula. In understanding what goes wrong and what's hiding in plain sight.
 
