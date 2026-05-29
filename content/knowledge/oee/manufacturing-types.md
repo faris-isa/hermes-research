@@ -1,5 +1,5 @@
 ---
-title: "Manufacturing Types and OEE"
+title: "3. Manufacturing Types and OEE"
 description: "How discrete, batch, continuous, assembly, and HMLV manufacturing change OEE calculation and interpretation."
 tags:
   - oee
@@ -9,7 +9,7 @@ tags:
   - discrete
 ---
 
-# Manufacturing Types and OEE
+# 3. Manufacturing Types and OEE
 
 Different manufacturing types require different OEE approaches. Using the wrong method produces misleading results. **Context is not optional.**
 

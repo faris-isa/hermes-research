@@ -1,5 +1,5 @@
 ---
-title: "OEE Improvement"
+title: "5. OEE Improvement"
 description: "Strategies for improving OEE that follow from understanding the mistakes — TPM, SMED, error-proofing, TOC, data collection."
 tags:
   - oee
@@ -9,7 +9,7 @@ tags:
   - smed
 ---
 
-# OEE Improvement
+# 5. OEE Improvement
 
 Improvement follows naturally from [[Mistakes and Hidden Factory|understanding the mistakes]]. Once you know *what* is going wrong, the strategies become obvious.
 

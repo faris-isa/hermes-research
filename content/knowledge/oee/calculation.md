@@ -1,5 +1,5 @@
 ---
-title: "OEE Calculation Methods"
+title: "2. OEE Calculation Methods"
 description: "Multiple ways to calculate OEE — simple, A×P×Q, batch, continuous — and why the approach depends on context."
 tags:
   - oee
@@ -7,7 +7,7 @@ tags:
   - manufacturing
 ---
 
-# OEE Calculation Methods
+# 2. OEE Calculation Methods
 
 There isn't one way to calculate OEE. There are several, and choosing the wrong one produces numbers that look precise but mean nothing.
 

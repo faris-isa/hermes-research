@@ -1,5 +1,5 @@
 ---
-title: "Extended Metrics — TEEP, OAE, OLE"
+title: "6. Extended Metrics — TEEP, OAE, OLE"
 description: "Beyond OEE — complementary metrics for total utilization, system-level losses, and workforce performance."
 tags:
   - oee
@@ -10,7 +10,7 @@ tags:
   - ole
 ---
 
-# Extended Metrics
+# 6. Extended Metrics
 
 OEE has blind spots — it doesn't capture total utilization, system-level losses, or workforce performance. These metrics fill those gaps.
 
