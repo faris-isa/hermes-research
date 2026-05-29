@@ -100,6 +100,6 @@ Calculates efficiency for entire plants with multiple interconnected devices. Mo
 
 ## Related
 
-- [[OEE Knowledge Index]]
-- [[Hidden Factory]]
+- [[OEE Concept and Interpretation]]
+- [[Common Mistakes and Hidden Factory]]
 - [[OEE Improvement Strategies]]

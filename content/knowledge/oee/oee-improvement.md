@@ -1,23 +1,25 @@
 ---
 title: "OEE Improvement Strategies"
-description: "Strategies for improving OEE: TPM, SMED, error-proofing, standardized work, and more."
+description: "TPM, SMED, Poka-Yoke, and why the OEE Drop happens when you switch to automatic measurement."
 tags:
   - oee
-  - manufacturing
   - improvement
   - tpm
   - smed
+  - manufacturing
 ---
 
 # OEE Improvement Strategies
+
+Once you know where the losses are (from [[Common Mistakes and Hidden Factory|Six Big Losses]]), here's how to attack them.
 
 ## Strategy Matrix
 
 | Strategy | Target Loss | Key Concept |
 |----------|-------------|-------------|
 | **TPM** | Equipment Failure | Autonomous + planned maintenance, operator ownership |
-| **SMED** | Setup & Adjustment | Convert internal setup to external, reduce changeover time |
-| **Error-Proofing** | Process Defects | Prevent defects from occurring at source (Poka-Yoke) |
+| **SMED** | Setup & Adjustment | Convert internal to external setup, reduce changeover time |
+| **Error-Proofing (Poka-Yoke)** | Process Defects | Prevent defects at source |
 | **Standardized Work** | Reduced Yield / Defects | Consistent startup procedures, reduce variability |
 | **Automated Data Collection** | All (accuracy) | Eliminate manual entry errors, real-time visibility |
 | **Operator Engagement** | All (culture) | Frontline knowledge drives accurate data + improvements |
@@ -27,17 +29,17 @@ tags:
 
 ## TPM (Total Productive Maintenance)
 
-TPM targets **Equipment Failure** — the #1 availability loss.
+Targets **Equipment Failure** — the #1 availability loss.
 
 **Eight Pillars:**
-1. Autonomous Maintenance — operators maintain their own equipment
-2. Planned Maintenance — scheduled preventive maintenance
-3. Quality Maintenance — prevent quality defects at source
-4. Focused Improvement — small cross-functional teams tackling chronic losses
-5. Early Equipment Management — design for maintainability
-6. Training & Education — build skills at all levels
-7. Safety, Health, Environment — zero accidents
-8. Office TPM — support functions improve too
+1. **Autonomous Maintenance** — operators maintain their own equipment
+2. **Planned Maintenance** — scheduled preventive maintenance
+3. **Quality Maintenance** — prevent quality defects at source
+4. **Focused Improvement** — small cross-functional teams tackling chronic losses
+5. **Early Equipment Management** — design for maintainability
+6. **Training & Education** — build skills at all levels
+7. **Safety, Health, Environment** — zero accidents
+8. **Office TPM** — support functions improve too
 
 **Key insight:** TPM shifts maintenance from "maintenance department's job" to "everyone's job."
 
@@ -45,7 +47,7 @@ TPM targets **Equipment Failure** — the #1 availability loss.
 
 ## SMED (Single-Minute Exchange of Die)
 
-SMED targets **Setup & Adjustment** — the second availability loss.
+Targets **Setup & Adjustment** — the second availability loss.
 
 **Four Steps:**
 1. **Separate** internal (machine stopped) from external (machine running) setup
@@ -61,7 +63,7 @@ SMED targets **Setup & Adjustment** — the second availability loss.
 
 ## Error-Proofing (Poka-Yoke)
 
-Poka-Yoke targets **Process Defects**.
+Targets **Process Defects**.
 
 **Three Levels:**
 1. **Prevention** — make it impossible to make the error (best)
@@ -86,27 +88,21 @@ Targets **Reduced Yield** and **Process Defects**.
 
 ---
 
-## Automated Data Collection
+## The OEE Drop (Manual → Automatic)
 
-Improves **all OEE factors** by eliminating measurement error.
+> **Critical warning:** When switching from manual Excel tracking to automatic measurement, OEE typically **drops 15–20 percentage points** in the first 1–2 weeks.
 
-The [[Common OEE Mistakes#5. Manual vs Automatic Measurement|"OEE Drop" effect]] proves how much is invisible with manual tracking. Automatic data collection is a prerequisite for any serious [[OEE — Overall Equipment Effectiveness|OEE]] improvement program.
+This is NOT worse performance. It's accurate measurement revealing real losses that were previously invisible.
 
----
-
-## Operator Engagement
-
-The most underrated strategy. Operators have the **deepest knowledge** about their machines.
-
-- Include operators in data collection (not just observers)
-- Use their input for root cause analysis
-- Give them authority to stop the line for quality
-- Recognize and reward improvement suggestions
+**Rules:**
+- Measure automatically for **4+ weeks** before comparing to benchmarks
+- Never compare newly measured automatic OEE to mixed manual/automatic benchmarks
+- Your first real baseline WILL look worse. That is correct.
 
 ---
 
 ## Related
-- [[OEE — Overall Equipment Effectiveness]]
-- [[Six Big Losses]]
-- [[Hidden Factory]]
-- [[Common OEE Mistakes]]
+
+- [[Common Mistakes and Hidden Factory]] — what goes wrong and Six Big Losses
+- [[OEE Calculation Methods]] — how to calculate correctly
+- [[Manufacturing Types and Industry Implementation]] — how context changes the approach
