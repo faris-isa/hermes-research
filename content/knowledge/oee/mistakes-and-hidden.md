@@ -1,0 +1,192 @@
+---
+title: "Mistakes and Hidden Factory"
+description: "The Six Big Losses, Hidden Factory, and common OEE mistakes — where the real value is."
+tags:
+  - oee
+  - losses
+  - hidden-factory
+  - mistakes
+  - manufacturing
+---
+
+# Mistakes and Hidden Factory
+
+This is where the real value is. Not in the formula — everyone knows the formula. In understanding what goes wrong and what's hiding in plain sight.
+
+## The Six Big Losses
+
+The Six Big Losses framework categorizes all production losses into three groups that map directly to the [[OEE — Overall Equipment Effectiveness#The Formula|OEE formula]].
+
+| # | Loss | Category | OEE Factor |
+|---|------|----------|------------|
+| 1 | Equipment Failure | Unplanned Stop | Availability |
+| 2 | Setup & Adjustment | Planned Stop | Availability |
+| 3 | Idling & Minor Stops | Speed Loss | Performance |
+| 4 | Reduced Speed | Speed Loss | Performance |
+| 5 | Process Defects | Quality Loss | Quality |
+| 6 | Reduced Yield | Quality Loss | Quality |
+
+### Availability Losses — When Equipment Stops
+
+**1. Equipment Failure (Unplanned Stop)**
+
+Significant downtime due to failure or unplanned event.
+
+- Tooling failure, breakdowns
+- Unplanned maintenance
+- Lack of operators or materials
+- Starved/blocked by upstream/downstream
+
+> **Threshold:** Downtime > 2 min = Equipment Failure; ≤ 2 min = Minor Stop. This threshold is arbitrary but widely used. Set it based on your process — a 30-second stop on a 10-second cycle is catastrophic; on a 10-minute cycle, it's noise.
+
+**2. Setup & Adjustment (Planned Stop)**
+
+Downtime due to changeover or adjustment.
+
+- Changeovers (make ready)
+- Major adjustments
+- Cleaning, warmup
+- Planned maintenance
+
+> **Developer note:** Setup time is "planned" in the schedule — but it's still an availability loss. Don't let your system classify changeovers as "planned downtime" and exclude them from OEE. That's hiding the loss, not managing it.
+
+### Performance Losses — When Equipment Runs Slow
+
+**3. Idling & Minor Stops**
+
+Short stops (1–2 min) resolved by operator without maintenance.
+
+- Misfeeds, material jams
+- Obstructed flow
+- Incorrect settings
+- Misaligned sensors
+- Periodic quick cleaning
+
+> **Key insight:** Minor stops are chronic and often overlooked but accumulate significantly. Most companies don't track them accurately. A machine that stops for 30 seconds every 5 minutes loses 10% of its time — but nobody notices because each stop is "minor."
+
+**4. Reduced Speed**
+
+Running slower than Ideal Cycle Time.
+
+- Dirty/worn equipment
+- Poor lubrication
+- Substandard materials
+- Operator inexperience
+- Startup/shutdown periods
+
+### Quality Losses — When Parts Don't Meet Spec
+
+**5. Process Defects**
+
+Defective parts during **stable (steady-state) production** — includes scrap AND rework.
+
+> **OEE uses First Pass Yield** — reworked parts count as quality loss. This is intentional. Rework costs time, labor, and materials. Hiding it inflates OEE.
+
+- Incorrect settings
+- Operator errors
+- Lot expiration
+
+**6. Reduced Yield**
+
+Defective parts from **startup until stable production** — most common after changeovers.
+
+- Suboptimal changeovers
+- Incorrect settings
+- Equipment warmup cycles
+- Inherent startup waste
+
+## The Hidden Factory
+
+The **Hidden Factory** is the untapped production capacity that can be unlocked **without capital investment**. Coined by Armand Feigenbaum (late 1970s), originally focused on quality waste, now covers all manufacturing waste.
+
+```
+Fully Productive Time = Good Pieces × Ideal Cycle Time
+Hidden Factory Time  = All Time (24/7) − Fully Productive Time
+```
+
+For many manufacturers, **the hidden factory is larger than actual output.**
+
+### The Four Loss Zones
+
+**1. Schedule Loss** (often largest for 1–2 shift operations)
+
+Time not scheduled for production. The biggest lever here is better scheduling — not equipment improvement. If you're running 1 shift but have capacity for 3, your hidden factory is enormous.
+
+**2. Availability Loss** (largest during scheduled time)
+
+Downtime from equipment failure and changeovers.
+
+**3. Performance Loss** (often hidden)
+
+Small stops and slow cycles that go unnoticed. This is the hardest to measure and the most frequently underestimated.
+
+**4. Quality Loss** (smallest but highest customer risk)
+
+Defects, rework, scrap. Small by percentage, but the customer impact is disproportionate.
+
+> **Developer opinion:** Your system should surface the Hidden Factory metric prominently. It's more motivating than OEE alone. When operators see that 60% of their time is "hidden factory," the urgency becomes real.
+
+## Common OEE Mistakes
+
+These mistakes lead to misleading OEE numbers that don't reflect real performance.
+
+### 1. Misclassifying Stops as "Planned"
+
+Changeovers and setup are **availability losses**, not acceptable downtime. Classifying them as "planned" inflates OEE and hides improvement opportunities.
+
+> Setup time is planned in the schedule — but it's still a loss that reduces OEE. Your system should track "planned" vs "unplanned" separately, but both should count against Availability.
+
+### 2. Excluding Operators
+
+Operators have the **deepest machine knowledge**. Excluding them from data collection and improvement efforts leads to:
+- Poor data quality (guessing instead of measuring)
+- No buy-in for improvement initiatives
+- Missed root causes
+
+### 3. Using Standard Speed Instead of Design Speed
+
+Historical average speed places a **false upper limit** on improvement. If the machine was designed to run at 100 units/min but averages 80, using 80 as the target says "we can't improve."
+
+**Always use design speed** (Ideal Cycle Time from spec) for Performance calculations.
+
+### 4. Insufficient Data Collection
+
+Manual/paper-based monitoring is error-prone:
+
+- Operators guess downtimes
+- Minor stops go unrecorded
+- Cycle times are rounded or estimated
+- Quality data is batched, not real-time
+
+**The fix:** Automate data collection. See [[Improvement#Automated Data Collection]].
+
+### 5. Focusing Only on OEE Score
+
+Looking at the single OEE number without examining A, P, Q individually:
+
+- Two lines with same OEE can have completely different loss profiles
+- Improvement actions depend on WHICH factor is weakest
+- OEE can stay flat while one factor drops and another rises
+
+### 6. Performance > 100%
+
+Performance exceeding 100% means the **Ideal Cycle Time is set too high** (or design speed is wrong). This inflates OEE and masks real losses.
+
+> If machines consistently run faster than spec, update the Ideal Cycle Time. Don't let a flattering number hide a configuration error.
+
+### 7. Assuming 100% Quality
+
+Without real-time quality tracking, quality is often **guessed** — and usually guessed optimistically. Inline sensors and vision systems provide actual data.
+
+### 8. Setting One Target for All Lines
+
+Different products, complexities, and batch sizes produce different OEE profiles. A line making 10 products should naturally have lower OEE than a single-product line due to changeover losses — **this is expected and correct.**
+
+> **Developer opinion:** Your system should let users set different targets per line, per product family, per shift. A single global target is a management fantasy, not a engineering reality.
+
+## Related
+
+- [[OEE — Overall Equipment Effectiveness]]
+- [[Calculation Methods]]
+- [[Manufacturing Types]]
+- [[Improvement]]
