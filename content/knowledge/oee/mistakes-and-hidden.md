@@ -40,17 +40,6 @@ graph TD
 
     Q --> Q1["5️⃣ Process Defects<br/>(Quality Loss)"]
     Q --> Q2["6️⃣ Reduced Yield<br/>(Quality Loss)"]
-
-    style OEE fill:#28a745,stroke:#155724,color:#fff
-    style A fill:#dc3545,stroke:#c82333,color:#fff
-    style P fill:#fd7e14,stroke:#e67e00,color:#fff
-    style Q fill:#6f42c1,stroke:#5a32a3,color:#fff
-    style A1 fill:#f8d7da,stroke:#721c24
-    style A2 fill:#f8d7da,stroke:#721c24
-    style P1 fill:#fff3cd,stroke:#856404
-    style P2 fill:#fff3cd,stroke:#856404
-    style Q1 fill:#e2d9f3,stroke:#5a32a3
-    style Q2 fill:#e2d9f3,stroke:#5a32a3
 ```
 
 ### Availability Losses — When Equipment Stops

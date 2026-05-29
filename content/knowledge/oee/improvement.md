@@ -135,12 +135,6 @@ graph LR
     S3 --> S4["4️⃣ Elevate<br/>Constraint"]
     S4 --> S5["5️⃣ Repeat<br/>(Don't Let Inertia Set In)"]
     S5 -.->|"New bottleneck found"| S1
-
-    style S1 fill:#dc3545,stroke:#c82333,color:#fff
-    style S2 fill:#fd7e14,stroke:#e67e00,color:#fff
-    style S3 fill:#ffc107,stroke:#e0a800
-    style S4 fill:#28a745,stroke:#155724,color:#fff
-    style S5 fill:#17a2b8,stroke:#138496,color:#fff
 ```
 
 > **Key insight:** Improving OEE at non-bottleneck machines **does not increase throughput** — it only creates excess inventory. Focus OEE improvement efforts on the constraint first.
