@@ -53,7 +53,9 @@ SMED targets **Setup & Adjustment** — the second availability loss.
 
 > The goal is "single-digit" changeover — under 10 minutes.
 
-**Common result:** 50–75% reduction in changeover time.
+**Common result:** 50–90% reduction in changeover time. "30% to 60% of changeover time is hidden — and recoverable."
+
+> *Source: Oxmaint — "SMED has helped factories slash setup times by 50% to 90%, turning multi-hour changeovers into sub-10-minute operations."
 
 > **Developer note:** SMED data is gold for your system. Track which setup steps are internal vs external. Surface the conversion opportunity. A system that just records "changeover: 45 min" is useless. One that records "changeover: 45 min, of which 20 min could be external" is actionable.
 
@@ -90,11 +92,13 @@ The [[Mistakes and Hidden Factory#The OEE Drop|"OEE Drop" effect]] proves how mu
 
 | Tier | Method | Accuracy | Cost | Real-time |
 |------|--------|----------|------|-----------|
-| 1 | Manual (clipboard) | ~60-70% | Low | No |
+| 1 | Manual (clipboard) | ~60-70% of actual downtime captured | Low | No |
 | 2 | Semi-digital (spreadsheets) | ~70-80% | Low | No |
 | 3 | Automated (PLC/sensors) | ~95-99% | High | Yes |
-| 4 | Computer Vision | ~90-95% | Medium | Yes |
+| 4 | Computer Vision | ~97-99.5% detection accuracy | Medium | Yes |
 | **Hybrid** | **PLC + operator input** | **~95-99%** | **Medium-High** | **Yes** |
+
+> *Source: Oxmaint — "Manual systems typically capture only 60-70% of actual downtime." Computer vision achieves "97-99.5% detection accuracy" vs 60-80% for human inspectors.*
 
 > **Developer opinion:** The hybrid approach wins. PLCs detect *what* happened. Operators explain *why*. A downtime event without a reason code is a debugging session waiting to happen. A reason code without event detection is a guess. You need both.
 

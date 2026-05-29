@@ -172,7 +172,9 @@ Losses can be viewed from three angles:
 
 ## The OEE Drop
 
-> **Critical warning:** Switching from manual Excel tracking to automatic measurement, OEE typically **drops 15–20 percentage points** in the first 1–2 weeks.
+> **Critical warning:** Switching from manual Excel tracking to automatic measurement, OEE typically **drops 8–15 percentage points** in the first 1–2 weeks. Manual values are systematically higher than reality because operators guess, round, and miss minor stops.
+>
+> *Source: Symestic (2026) — "Manual values are systematically 8–12 percentage points higher than reality." Evocon (2023) — automatic measurement reveals OEE <40% when first deployed.*
 
 This is NOT worse performance — it's accurate measurement revealing real losses that were previously invisible.
 
