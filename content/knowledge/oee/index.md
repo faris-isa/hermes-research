@@ -31,16 +31,18 @@ Each factor captures a different *kind* of loss. Together they tell you how much
 
 Every second of calendar time flows through this waterfall. Losses accumulate at each level:
 
-```
-Calendar Time
-  → - Schedule Loss (nights, weekends, no orders)
-  = Planned Production Time
-    → - Availability Loss (breakdowns, changeovers)
-    = Run Time
-      → - Performance Loss (slow cycles, minor stops)
-      = Net Run Time
-        → - Quality Loss (defects, scrap, rework)
-        = Fully Productive Time → Good Output
+```mermaid
+graph TD
+    A["📅 Calendar Time<br/>(24/7/365)"] -->|"− Schedule Loss<br/>(nights, weekends, no orders)"| B["📋 Planned Production Time"]
+    B -->|"− Availability Loss<br/>(breakdowns, changeovers)"| C["⚙️ Run Time"]
+    C -->|"− Performance Loss<br/>(slow cycles, minor stops)"| D["⏱️ Net Run Time"]
+    D -->|"− Quality Loss<br/>(defects, scrap, rework)"| E["✅ Fully Productive Time<br/>→ Good Output"]
+
+    style A fill:#e3e3e3,stroke:#333
+    style B fill:#fff3cd,stroke:#856404
+    style C fill:#d1ecf1,stroke:#0c5460
+    style D fill:#d4edda,stroke:#155724
+    style E fill:#28a745,stroke:#155724,color:#fff
 ```
 
 > **For developers:** This waterfall is your data model. Each transition is a state change. Your system needs to track *when* each transition happened and *why*. The "why" is where the real value lives.
@@ -77,8 +79,16 @@ Every percentage point of OEE translates directly to capacity:
 
 ## The Hierarchy Problem
 
-```
-Machine (per shift) → Line (per shift) → Area → Plant
+```mermaid
+graph LR
+    M["🔧 Machine<br/>(per shift)"] --> L["📏 Line<br/>(per shift)"]
+    L --> A["🏭 Area"]
+    A --> P["🏢 Plant"]
+
+    style M fill:#d1ecf1,stroke:#0c5460
+    style L fill:#d4edda,stroke:#155724
+    style A fill:#fff3cd,stroke:#856404
+    style P fill:#f8d7da,stroke:#721c24
 ```
 
 This looks clean. It's not.
@@ -103,6 +113,22 @@ This looks clean. It's not.
 ## Reading Order
 
 This knowledge base is designed to be read in order. Each section builds on the previous one:
+
+```mermaid
+graph LR
+    S1["1️⃣ OEE Concept<br/>What it is"] --> S2["2️⃣ Calculation<br/>How to compute"]
+    S2 --> S3["3️⃣ Types<br/>Context matters"]
+    S3 --> S4["4️⃣ Mistakes<br/>What goes wrong"]
+    S4 --> S5["5️⃣ Improvement<br/>How to fix it"]
+    S5 --> S6["6️⃣ Extended<br/>Beyond OEE"]
+
+    style S1 fill:#28a745,stroke:#155724,color:#fff
+    style S2 fill:#17a2b8,stroke:#138496,color:#fff
+    style S3 fill:#fd7e14,stroke:#e67e00,color:#fff
+    style S4 fill:#dc3545,stroke:#c82333,color:#fff
+    style S5 fill:#6f42c1,stroke:#5a32a3,color:#fff
+    style S6 fill:#6c757d,stroke:#545b62,color:#fff
+```
 
 1. [[OEE — Overall Equipment Effectiveness|1. OEE Concept]] — What it is, the formula, world-class targets
 2. [[Calculation Methods|2. Calculation Methods]] — Multiple ways to calculate, and why it matters
