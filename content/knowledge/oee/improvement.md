@@ -126,7 +126,37 @@ Your system needs:
 
 > **Key insight:** Improving OEE at non-bottleneck machines **does not increase throughput** — it only creates excess inventory. Focus OEE improvement efforts on the constraint first.
 
+**Practical example:** A bottling line has 5 machines. Filler OEE = 72%, Labeler OEE = 89%, Capper OEE = 91%, Packer OEE = 85%, Palletizer OEE = 94%. The filler is the bottleneck. Improving the labeler from 89% to 95% does nothing for line throughput — parts just queue before the filler. Improving the filler from 72% to 80% increases total line output.
+
 > **Developer note:** Your system should flag the bottleneck machine and prioritize its OEE dashboard. Don't treat all machines equally — the constraint matters more.
+
+## Root Cause Analysis
+
+Finding the mistake is step one. Understanding *why* it happens is where improvement lives.
+
+### 5 Whys
+
+Ask "why" repeatedly until you reach the root cause:
+
+1. **Why did the machine stop?** → Bearing failed
+2. **Why did the bearing fail?** → Insufficient lubrication
+3. **Why was lubrication insufficient?** → Maintenance schedule missed
+4. **Why was the schedule missed?** → No automated alerts
+5. **Why no alerts?** → Maintenance tracking is manual
+
+> **For developers:** Your downtime event model should support a `root_cause` field that links to a `root_cause_analysis` table. Track the chain of why's. It's the most valuable data you'll collect.
+
+### Fishbone (Ishikawa) Diagram
+
+Categorize potential causes:
+- **Man:** Operator error, training gap, fatigue
+- **Machine:** Wear, misalignment, calibration drift
+- **Material:** Substandard inputs, lot variation, contamination
+- **Method:** Wrong recipe, incorrect sequence, missing SOP
+- **Measurement:** Sensor drift, incorrect thresholds, sampling gap
+- **Environment:** Temperature, humidity, vibration
+
+> **Developer note:** Map your downtime reason codes to these 6 categories. It lets you aggregate losses by root cause type, not just by specific event. "Machine" category losses might need a maintenance overhaul. "Man" losses might need training.
 
 ## Setting Targets
 
@@ -139,6 +169,27 @@ Your system needs:
 
 - Don't compare dissimilar processes
 - Targets should be **stretch but achievable within 3–4 months**
+
+**Concrete example of target setting:**
+- Baseline OEE: 58% (after 4 weeks of automatic measurement)
+- Best single shift: 72%
+- TCB target: 72% (achievable, proven possible)
+- AFSM target: 65% (most days should hit this)
+- 85% target: Not realistic in the near term — focus on getting to 70% first
+
+## Measuring Improvement Impact
+
+After implementing a countermeasure, measure impact using these signals:
+
+| Signal | What It Means |
+|--------|---------------|
+| OEE factor improved | Direct improvement in the targeted loss |
+| OEE flat but loss reduced | Improvement offset by another loss (common) |
+| OEE dropped after change | New problem introduced — investigate |
+| OEE improved but output didn't | Bottleneck is elsewhere — check TOC |
+| OEE improved on one shift only | Inconsistent implementation — training needed |
+
+> **Developer opinion:** Your system should automatically detect these patterns and surface them. "OEE improved 5% on Line A but output didn't change — Line A is not the bottleneck" is an insight your system should generate, not something the user has to figure out.
 
 ## Related
 

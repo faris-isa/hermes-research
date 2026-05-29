@@ -29,6 +29,21 @@ Performance = (idealCycleTime × totalCount) / runTime
 
 > **Developer note:** Your data model needs a `product_variant` field on every cycle record. Without it, Performance calculations are meaningless when you run 10 different products.
 
+**Data model for discrete:**
+```sql
+-- One row per unit produced
+CREATE TABLE unit_event (
+  unit_id       TEXT PRIMARY KEY,
+  machine_id    TEXT,
+  product_variant TEXT,
+  timestamp     TIMESTAMPTZ,
+  cycle_time    DECIMAL,      -- actual cycle time for this unit
+  status        TEXT          -- 'good', 'defect', 'rework'
+);
+```
+
+**Key design decision:** Do you store every unit, or aggregate per shift? Every unit gives you cycle time distribution (powerful for Performance analysis). Per-shift aggregation saves storage but loses detail. **Store every unit** — storage is cheap, insights are expensive to recreate.
+
 ## 2. Batch Manufacturing
 
 Groups of units processed together through recipe-based phases — food, chemicals, pharmaceuticals.
@@ -73,6 +88,31 @@ Batch Timeline:
 
 > **Developer note:** Batch OEE needs a `batch_id` that links to recipe phases, quality hold events, and lab results. Your data model is more complex than discrete — plan for it.
 
+**Data model for batch:**
+```sql
+CREATE TABLE batch_event (
+  batch_id      TEXT PRIMARY KEY,
+  machine_id    TEXT,
+  recipe_id     TEXT,
+  start_time    TIMESTAMPTZ,
+  end_time      TIMESTAMPTZ,
+  quantity      INTEGER,
+  good_quantity INTEGER,
+  status        TEXT          -- 'complete', 'hold', 'rejected'
+);
+
+CREATE TABLE batch_phase (
+  batch_id      TEXT,
+  phase_name    TEXT,         -- 'mixing', 'heating', 'cooling'
+  start_time    TIMESTAMPTZ,
+  end_time      TIMESTAMPTZ,
+  ideal_duration DECIMAL,     -- from recipe spec
+  actual_duration DECIMAL
+);
+```
+
+**Key design decision:** Batch quality often has a time lag — lab results come hours after batch completion. Your system needs a "quality hold" state where the batch is complete but quality is pending. Don't count it as good OR defective until the lab result arrives.
+
 ## 3. Continuous / Process Manufacturing
 
 Uninterrupted flow of material — chemicals, oil refining, beverages.
@@ -88,6 +128,24 @@ Quality     = goodOutput / totalOutput
 - **Key challenge:** Off-spec production, unplanned shutdowns
 
 > **Developer note:** No `totalCount` field. Your data model needs `actual_rate` and `design_rate` as floats, not integers. Quality is measured by deviation from spec, not by counting defects.
+
+**Data model for continuous:**
+```sql
+CREATE TABLE flow_event (
+  event_id      TEXT PRIMARY KEY,
+  machine_id    TEXT,
+  start_time    TIMESTAMPTZ,
+  end_time      TIMESTAMPTZ,
+  actual_rate   DECIMAL,      -- kg/hr, L/hr
+  design_rate   DECIMAL,      -- from process spec
+  total_output  DECIMAL,      -- kg, L, tonnes
+  good_output   DECIMAL,      -- within spec
+  off_spec_output DECIMAL,    -- out of spec but not scrapped
+  scrap_output  DECIMAL       -- total loss
+);
+```
+
+**Key design decision:** Continuous processes don't have "units" — they have rates. Your OEE calculation must be time-window based, not count-based. A 1-hour window with 800 kg output at 1000 kg/hr design rate gives 80% Performance.
 
 ## 4. Assembly Line / Multi-Station
 
@@ -122,6 +180,30 @@ Quality      = Σ(goodCount_i) / Σ(totalCount_i)
 - Consider [[Extended Metrics#OLE — Overall Labor Effectiveness|OLE]] alongside OEE
 
 > **Developer note:** HMLV needs per-variant cycle time lookup tables. Your `ideal_cycle_time` is not a single value — it's a function of `product_variant`. Plan your schema accordingly.
+
+**Data model for HMLV:**
+```sql
+CREATE TABLE variant_cycle_time (
+  machine_id      TEXT,
+  product_variant TEXT,
+  ideal_cycle_time DECIMAL,   -- per unit, from engineering spec
+  PRIMARY KEY (machine_id, product_variant)
+);
+
+-- Changeover tracking
+CREATE TABLE changeover_event (
+  event_id        TEXT PRIMARY KEY,
+  machine_id      TEXT,
+  start_time      TIMESTAMPTZ,
+  end_time        TIMESTAMPTZ,
+  from_variant    TEXT,
+  to_variant      TEXT,
+  internal_time   DECIMAL,    -- machine stopped (SMED target)
+  external_time   DECIMAL     -- machine running (preparation)
+);
+```
+
+**Key design decision:** HMLV changeover times vary by transition pair. A→B might take 15 min, but A→C takes 45 min. Store the `from_variant` and `to_variant` so you can build a changeover matrix and identify which transitions need SMED attention.
 
 ## 6. OLE — Operator Labor Effectiveness
 

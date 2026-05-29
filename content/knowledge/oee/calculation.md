@@ -33,12 +33,18 @@ This gives you a score AND the three loss factors to target improvement. **Alway
 
 ## Performance Calculation — The Tricky Part
 
-Performance is where most OEE implementations get it wrong.
+Performance is where most OEE implementations get it wrong. It's the most nuanced factor and the one most likely to produce misleading numbers.
 
 ### Standard Formula
 ```
 Performance = (idealCycleTime × totalCount) / runTime
 ```
+
+**Example:**
+- Ideal Cycle Time: 0.5 min/unit (design speed = 2 units/min)
+- Total Count: 800 units
+- Run Time: 420 min
+- Performance = (0.5 × 800) / 420 = **95.2%**
 
 ### What Can Go Wrong
 
@@ -47,6 +53,35 @@ Performance = (idealCycleTime × totalCount) / runTime
 > **Rule:** If Performance exceeds 100%, update the Ideal Cycle Time. A well-calibrated system should never exceed 100%.
 
 **Using historical average instead of design speed:** If the machine was designed to run at 100 units/min but averages 80, using 80 as the target says "we can't improve." Always use design speed from the machine spec.
+
+**Run Time = 0 edge case:** If the machine never ran (full shift downtime), Performance is undefined (division by zero). Your system should return 0% or null — not crash. This happens more often than you'd think during commissioning or extended breakdowns.
+
+**Partial counts:** What if you count 800 units but 50 are reworked? totalCount = 800 (all produced), goodCount = 750 (first-pass good). Quality uses goodCount. Performance uses totalCount. Don't confuse them.
+
+### Data Model Hint
+
+Store these raw values — never just the calculated percentages:
+
+```sql
+CREATE TABLE oee_record (
+  machine_id       TEXT,
+  shift_id         TEXT,
+  product_variant  TEXT,
+  planned_time     INTERVAL,   -- planned production time
+  run_time         INTERVAL,   -- actual running time
+  ideal_cycle_time DECIMAL,    -- per unit, from machine spec
+  total_count      INTEGER,    -- all parts produced
+  good_count       INTEGER,    -- first-pass good parts
+  downtime_events  JSONB,      -- array of {start, end, reason_code}
+  -- Calculated fields (store for query speed, but always recompute for accuracy)
+  availability     DECIMAL,
+  performance      DECIMAL,
+  quality          DECIMAL,
+  oee              DECIMAL
+);
+```
+
+> **Why store downtime_events as JSONB?** Because the "why" changes over time. You'll want to reclassify downtime reasons later when your taxonomy improves. Raw events give you that flexibility.
 
 ## Batch Performance — Three Methods
 
@@ -103,7 +138,27 @@ How do you combine machine-level OEE into line-level or plant-level numbers?
 3. **Parallel lines** (independent): Weighted average works
 4. **Batch processes**: Weight by batch duration, not quantity
 
+### Concrete Example: Why Simple Average Fails
+
+Machine A ran 6 hours, OEE = 90%. Machine B ran 2 hours, OEE = 50%.
+
+**Simple average:** (90 + 50) / 2 = **70%** — looks decent.
+
+**Duration-weighted:** (90×6 + 50×2) / (6+2) = **80%** — Machine A ran 3× longer, so it dominates.
+
+The simple average makes Machine B's problems look worse than they are relative to total output. The weighted average correctly reflects that most production came from Machine A.
+
+### Concrete Example: Sequential Lines
+
+3 stations in series: Station A (95% OEE), Station B (88% OEE), Station C (92% OEE).
+
+**Weighted average:** (95 + 88 + 92) / 3 = **91.7%** — looks great.
+
+**Constraint-based:** If Station B is the bottleneck at 88%, line throughput is capped at 88% regardless of what A and C do. Improving A to 100% doesn't help — parts just pile up before B.
+
 > **The core insight:** Hierarchy does not apply uniformly. A 2-hour batch and a 30-minute batch should not have equal weight. A line with 5 sequential stations should not be averaged — the bottleneck determines throughput.
+
+> **For developers:** Your aggregation logic should be configurable per line. Don't hardcode one method. Let the manufacturing engineer choose: duration-weighted, quantity-weighted, or constraint-based. Store the method used so results are reproducible.
 
 ## Loss Perspectives
 

@@ -60,6 +60,16 @@ Calendar Time
 
 > **Developer opinion:** Don't treat 85% as a universal target. It was derived from specific Japanese automotive plants in the 1980s. Your context matters more — see [[Manufacturing Types]].
 
+## Why OEE Matters Financially
+
+Every percentage point of OEE translates directly to capacity:
+
+- A factory running 24/7 with 60% OEE has the **same output** as a 24/7 factory at 100% OEE running only **14.4 hours/day**
+- Improving OEE from 60% to 75% is equivalent to **adding 25% more capacity** — without buying a single machine
+- For a line producing $10M/year, a 5% OEE improvement = **$500K–$1M in recovered capacity**
+
+> **For developers:** When building dashboards, always show the financial equivalent. "OEE improved 3%" means nothing to a CFO. "We recovered $300K in capacity this quarter" means everything.
+
 ## The Hierarchy Problem
 
 ```
