@@ -37,6 +37,14 @@ Martin Kleppmann's definitive guide to distributed systems and data-intensive ap
 - [[Part 11 — Stream Processing]] — Event logs, CDC, complex event processing
 - [[Part 12 — The Future of Data Systems]] — Ethics, data as assets
 
+### [[Multi-Region Applications]]
+Patterns, strategies, and trade-offs for deploying applications across multiple geographic regions:
+- [[Deployment Topologies]] — Active-active, active-passive, active-warm patterns
+- [[Data Replication Strategies]] — Sync, async, semi-sync replication and conflict resolution
+- [[Traffic Routing and Latency]] — GeoDNS, anycast, global load balancers, edge compute
+- [[Failure Modes and Recovery]] — Regional outages, split-brain, cascading failures
+- [[Cost and Trade-offs]] — When multi-region is worth it and cost optimization
+
 ### [[A Philosophy of Software Design]]
 John Ousterhout's core principles for managing complexity:
 - [[Complexity and Its Symptoms]] — change amplification, cognitive load, unknown unknowns
