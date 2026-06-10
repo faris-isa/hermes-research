@@ -37,6 +37,28 @@ Martin Kleppmann's definitive guide to distributed systems and data-intensive ap
 - [[Part 11 — Stream Processing]] — Event logs, CDC, complex event processing
 - [[Part 12 — The Future of Data Systems]] — Ethics, data as assets
 
+### [[Multi-Region Applications]]
+Patterns, strategies, and trade-offs for deploying applications across multiple geographic regions:
+- [[Deployment Topologies]] — Active-active, active-passive, active-warm patterns
+- [[Data Replication Strategies]] — Sync, async, semi-sync replication and conflict resolution
+- [[Traffic Routing and Latency]] — GeoDNS, anycast, global load balancers, edge compute
+- [[Multi-Region Databases]] — CockroachDB, Spanner, YugabyteDB, DynamoDB Global Tables
+- [[Multi-Region Kubernetes]] — Federation, Istio service mesh, GitOps, blue-green deployments
+- [[Failure Modes and Recovery]] — Regional outages, split-brain, cascading failures
+- [[Testing, Chaos Engineering and Observability]] — Failover testing, LitmusChaos, distributed tracing, SLOs
+- [[Real-World Case Studies]] — Netflix, Uber, Stripe, Shopify, Discord, Cloudflare, Spanner
+- [[Cost and Trade-offs]] — When multi-region is worth it and cost optimization
+
+### [[Cloud Architecture Patterns]]
+Proven patterns for designing resilient, scalable, and cost-effective cloud applications:
+- [[Decomposition Patterns]] — Strangler Fig, Database per Service, API Composition, CQRS, Event Sourcing
+- [[Communication Patterns]] — Saga, Circuit Breaker, Retry, Bulkhead, Timeout
+- [[Data Patterns]] — Event-Driven Architecture, CDC, Outbox Pattern, CQRS + Event Sourcing
+- [[Deployment Patterns]] — Sidecar, Ambassador, Blue-Green, Canary, Feature Flags
+- [[Serverless Patterns]] — Fan-Out/Fan-In, API Gateway, Strangler Fig with Serverless
+- [[Security Patterns]] — Zero Trust Architecture, Identity-Aware Proxy
+- [[Anti-Patterns]] — Distributed Monolith, Shared Database, Synchronous Chains
+
 ### [[A Philosophy of Software Design]]
 John Ousterhout's core principles for managing complexity:
 - [[Complexity and Its Symptoms]] — change amplification, cognitive load, unknown unknowns
