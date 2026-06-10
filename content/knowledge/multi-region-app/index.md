@@ -281,6 +281,20 @@ Multi-region isn't free. Key cost drivers:
 
 ---
 
+## Deep Dives
+
+- [[Deployment Topologies]] — Active-active, active-passive, active-warm patterns
+- [[Data Replication Strategies]] — Sync, async, semi-sync, CRDTs, conflict resolution
+- [[Traffic Routing and Latency]] — GeoDNS, anycast, global LB, edge compute
+- [[Multi-Region Databases]] — CockroachDB, Spanner, YugabyteDB, DynamoDB Global Tables
+- [[Multi-Region Kubernetes]] — Federation, Istio service mesh, GitOps, blue-green deployments
+- [[Failure Modes and Recovery]] — Regional outages, split-brain, cascading failures
+- [[Testing, Chaos Engineering and Observability]] — Failover testing, LitmusChaos, distributed tracing, SLOs
+- [[Real-World Case Studies]] — Netflix, Uber, Stripe, Shopify, Discord, Cloudflare, Spanner
+- [[Cost and Trade-offs]] — When multi-region is worth it, cost optimization
+
+---
+
 ## Related Topics
 
 - [[Designing Data-Intensive Applications]] — Parts 05 (Replication), 06 (Partitioning), 08 (Distributed Troubles), 09 (Consistency and Consensus)
@@ -292,6 +306,11 @@ Multi-region isn't free. Key cost drivers:
 
 - Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly. Chapters 5, 6, 8, 9.
 - Burns, B. (2018). *Designing Distributed Systems*. O'Reilly.
+- Netflix TechBlog: Active-Active Multi-Region (2016)
+- Uber Engineering: Tiered Failover Architecture (2020, 2026)
+- Stripe Engineering: Multi-Region Payments Architecture
+- YugabyteDB Case Study: Shopify Migration
+- Google Spanner Paper (2012)
+- Cloudflare: Architecting on the Edge
 - AWS Multi-Region Architecture Whitepapers
-- Google Cloud Multi-Region Design Patterns
-- Cloudflare: "How we built a multi-region architecture"
+- CNCF: LitmusChaos Documentation

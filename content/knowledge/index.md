@@ -42,7 +42,11 @@ Patterns, strategies, and trade-offs for deploying applications across multiple 
 - [[Deployment Topologies]] — Active-active, active-passive, active-warm patterns
 - [[Data Replication Strategies]] — Sync, async, semi-sync replication and conflict resolution
 - [[Traffic Routing and Latency]] — GeoDNS, anycast, global load balancers, edge compute
+- [[Multi-Region Databases]] — CockroachDB, Spanner, YugabyteDB, DynamoDB Global Tables
+- [[Multi-Region Kubernetes]] — Federation, Istio service mesh, GitOps, blue-green deployments
 - [[Failure Modes and Recovery]] — Regional outages, split-brain, cascading failures
+- [[Testing, Chaos Engineering and Observability]] — Failover testing, LitmusChaos, distributed tracing, SLOs
+- [[Real-World Case Studies]] — Netflix, Uber, Stripe, Shopify, Discord, Cloudflare, Spanner
 - [[Cost and Trade-offs]] — When multi-region is worth it and cost optimization
 
 ### [[A Philosophy of Software Design]]
