@@ -49,6 +49,16 @@ Patterns, strategies, and trade-offs for deploying applications across multiple 
 - [[Real-World Case Studies]] — Netflix, Uber, Stripe, Shopify, Discord, Cloudflare, Spanner
 - [[Cost and Trade-offs]] — When multi-region is worth it and cost optimization
 
+### [[Cloud Architecture Patterns]]
+Proven patterns for designing resilient, scalable, and cost-effective cloud applications:
+- [[Decomposition Patterns]] — Strangler Fig, Database per Service, API Composition, CQRS, Event Sourcing
+- [[Communication Patterns]] — Saga, Circuit Breaker, Retry, Bulkhead, Timeout
+- [[Data Patterns]] — Event-Driven Architecture, CDC, Outbox Pattern, CQRS + Event Sourcing
+- [[Deployment Patterns]] — Sidecar, Ambassador, Blue-Green, Canary, Feature Flags
+- [[Serverless Patterns]] — Fan-Out/Fan-In, API Gateway, Strangler Fig with Serverless
+- [[Security Patterns]] — Zero Trust Architecture, Identity-Aware Proxy
+- [[Anti-Patterns]] — Distributed Monolith, Shared Database, Synchronous Chains
+
 ### [[A Philosophy of Software Design]]
 John Ousterhout's core principles for managing complexity:
 - [[Complexity and Its Symptoms]] — change amplification, cognitive load, unknown unknowns
