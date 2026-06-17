@@ -15,32 +15,25 @@ Repository of vendor responses to User Requirement Specifications (URS) for [[oe
 
 ## Clients
 
-### Nabati (PT. Kaldu Sari Nabati Indonesia)
+### [[Nabati MES Ecosystem|nabati]]
 
-**Scope:** MES Ecosystem — Gedung A Sektor 8, Plant Majalengka
-**URS Reference:** URS-2026.05 | V1.6 | 29/05/2026
-**Type:** Full MES Ecosystem (Application + OT Layer)
+**Client:** PT. Kaldu Sari Nabati Indonesia
+**Scope:** Full MES Ecosystem — Gedung A Sektor 8, Plant Majalengka
+**URS:** URS-2026.05 V1.6
 
-Two-part URS response:
+Two-part URS covering MES Application (Production, Inventory, Quality, Platform) and OT Layer (Infrastructure, Network, Data Capture, Governance).
 
-- **Part A — MES Application:** Production Management (PRD), Inventory & Material (INV), Quality Management / IPQC (QLT), Platform & Integration (PLT)
-- **Part B — OT Data, Infrastructure & Shopfloor DAQ:** OT Infrastructure (INF), Data Platform & Historian (DBH), Network & Connectivity (NET), Data Capture & Shopfloor Devices (DSA, ACQ, DVC, DAT)
+→ [[Nabati MES Ecosystem|nabati]]
 
-Process areas in scope: Mixing, Conching (Macintyre & Buhler), Cream Storage, Oven & Creaming, Packaging, Cartoning, BS Handling, WH RMPM.
+### [[Konimex OEE Online|konimex]]
 
-### Konimex (PT Konimex — Produksi Food 2)
-
+**Client:** PT Konimex — Produksi Food 2
 **Scope:** OEE Online — Line Hecrona 2
-**URS Reference:** FOOD2/URS/2026/001/00
-**Type:** OEE Monitoring System
+**URS:** FOOD2/URS/2026/001/00
 
-Covers machines from Mixer to Mesin Kemas Primer:
+Real-time OEE monitoring replacing manual EBR recording. PLC/HMI integration via OPC-UA, web dashboards, CPPOB compliance.
 
-- Mixer Hecrona 1 & 2
-- Moulding, Oven, Kuhlban
-- Mesin Packaging 1–6
-
-Requirements span: Business (PLC/HMI integration, real-time dashboards, CPPOB compliance), Data (ALCOA+, audit trail, reporting), Design (web-based, responsive, multi-bahasa), Infrastructure (Linux/PostgreSQL, SSO/RBAC, VPN).
+→ [[Konimex OEE Online|konimex]]
 
 ## Common URS Patterns
 
