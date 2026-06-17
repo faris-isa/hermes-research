@@ -15,6 +15,10 @@ Documentation for active projects, architecture decisions, and domain knowledge.
   - Architecture, modules, and technical decisions
   - Domain knowledge (OEE, shopfloor, maintenance)
 
+- [[OEE URS]] — Vendor URS Response Documents for OEE/MES implementations
+  - Nabati: Full MES Ecosystem (Application + OT Layer)
+  - Konimex: OEE Online for Line Hecrona 2
+
 ## How to Add a Project
 
 1. Create `content/projects/<project-name>/index.md`
