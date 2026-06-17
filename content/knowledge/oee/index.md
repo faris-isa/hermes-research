@@ -107,19 +107,21 @@ This knowledge base is designed to be read in order. Each section builds on the 
 graph LR
     S1["1️⃣ OEE Concept<br/>What it is"] --> S2["2️⃣ Calculation<br/>How to compute"]
     S2 --> S3["3️⃣ Types<br/>Context matters"]
-    S3 --> S4["4️⃣ Mistakes<br/>What goes wrong"]
-    S4 --> S5["5️⃣ Improvement<br/>How to fix it"]
-    S5 --> S6["6️⃣ Extended<br/>Beyond OEE"]
+    S3 --> S4["4️⃣ Batch Deep Dive<br/>Phase tracking"]
+    S3 --> S5["5️⃣ Mistakes<br/>What goes wrong"]
+    S5 --> S6["6️⃣ Improvement<br/>How to fix it"]
+    S6 --> S7["7️⃣ Extended<br/>Beyond OEE"]
 ```
 
 1. [[OEE — Overall Equipment Effectiveness|1. OEE Concept]] — What it is, the formula, world-class targets
 2. [[Calculation Methods|2. Calculation Methods]] — Multiple ways to calculate, and why it matters
 3. [[Manufacturing Types|3. Manufacturing Types]] — How context changes everything
-4. [[Mistakes and Hidden Factory|4. Mistakes and Hidden Factory]] — Where the real value is
-5. [[Improvement|5. Improvement]] — What to do after you find the problems
-6. [[Extended Metrics|6. Extended Metrics]] — TEEP, OAE, OLE — when OEE isn't enough
+4. [[Batch Phase Tracking|4. Batch Phase Tracking]] — Deep dive into batch OEE: phases, performance, aggregation
+5. [[Mistakes and Hidden Factory|5. Mistakes and Hidden Factory]] — Where the real value is
+6. [[Improvement|6. Improvement]] — What to do after you find the problems
+7. [[Extended Metrics|7. Extended Metrics]] — TEEP, OAE, OLE — when OEE isn't enough
 
-> **Tip:** If you're building an OEE system, read 1–3 first. If you're debugging bad OEE numbers, skip to 4. If you need to justify OEE investment, start with the financial section above.
+> **Tip:** If you're building an OEE system, read 1–4 first. If you're debugging bad OEE numbers, skip to 5. If you need to justify OEE investment, start with the financial section above. **If you're working with batch production**, section 4 is essential reading.
 
 ---
 
