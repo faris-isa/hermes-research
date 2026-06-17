@@ -51,7 +51,149 @@ Batch Timeline:
 
 > The **idle time between phases** and the **quality hold** are where OEE losses hide. In continuous production, these would just be "downtime." In batch, they're **specific, measurable, and actionable**.
 
-## 2. Why Phases Matter for OEE
+## 2. Line, Machine, and SKU — The Batch Architecture
+
+This is the most important architectural difference between batch and continuous production. Understanding it changes how you design your data model and calculate OEE.
+
+### Continuous vs. Batch: How Lines Work
+
+**Continuous production:**
+```
+Line 1 → runs Product A → 24/7 → rarely changes
+Line 2 → runs Product B → 24/7 → rarely changes
+```
+- One line = one product for long periods
+- Changeover is rare and costly (planned shutdown)
+- OEE is measured per line, per shift
+
+**Batch production:**
+```
+Line 1 → dedicated to SKU-X → runs batches of SKU-X all day
+Line 2 → dedicated to SKU-Y → runs batches of SKU-Y all day
+Line 3 → dedicated to SKU-Z → runs batches of SKU-Z all day
+```
+- One line = one SKU (or narrow SKU family)
+- Each line has its own recipe, its own ideal times, its own OEE
+- Changeover on a line is **batch-to-batch** (CIP clean between batches of the same SKU), not **SKU-to-SKU**
+
+> **Key insight:** In batch manufacturing, the **line IS the SKU**. When you ask "which line does SKU-X run on?" the answer is deterministic — it always runs on the same line. This is fundamentally different from continuous, where a line can switch products (with a big changeover).
+
+### Machine vs. Line — They're Not the Same Thing
+
+A **machine** is a single piece of equipment:
+- A mixer
+- A filler
+- A packer
+- A dryer
+
+A **line** is a sequence of machines working together:
+```
+Line A = Mixer → Heating Tank → Cooler → Filler → Packer
+Line B = Mixer → Reactor → Separator → Filler → Packer
+```
+
+In batch production:
+- **One line = multiple machines in sequence**
+- **One machine CAN serve multiple lines** (e.g., a shared mixer feeding both Line A and Line B)
+- **OEE is measured per line** (per SKU), not per individual machine
+
+> **Why this matters:** If you measure OEE per machine, you'll get misleading results. A shared mixer might show low OEE because it's idle when Line B is running — but that's expected behavior, not a loss. Measure at the **bottleneck of the line**, which is the constraint.
+
+### The SKU → Line → Machine Hierarchy
+
+```
+Plant
+├── Line A (SKU-X)
+│   ├── Machine 1: Mixer
+│   ├── Machine 2: Heating Tank
+│   ├── Machine 3: Cooler
+│   └── Machine 4: Filler
+├── Line B (SKU-Y)
+│   ├── Machine 1: Mixer (shared with Line A)
+│   ├── Machine 5: Reactor
+│   ├── Machine 6: Separator
+│   └── Machine 4: Filler (shared with Line A)
+└── Line C (SKU-Z)
+    ├── Machine 7: Blender
+    ├── Machine 8: Dryer
+    └── Machine 4: Filler (shared with Line A)
+```
+
+Notice:
+- **Machine 4 (Filler)** is shared across all three lines
+- **Machine 1 (Mixer)** is shared between Line A and Line B
+- Each line has its own dedicated machines AND some shared machines
+- The **SKU determines which line** it runs on
+- The **line determines which machines** are in the sequence
+
+### Data Model Implications
+
+```sql
+-- Lines are SKU-dedicated
+CREATE TABLE production_line (
+  line_id     TEXT PRIMARY KEY,
+  sku_id      TEXT NOT NULL,        -- one line = one SKU (typically)
+  recipe_id   TEXT NOT NULL,        -- recipe for this SKU
+  status      TEXT                  -- 'active', 'maintenance', 'idle'
+);
+
+-- Machines belong to lines (can be shared)
+CREATE TABLE line_machine (
+  line_id     TEXT,
+  machine_id  TEXT,
+  sequence_order INTEGER,           -- position in the line (1, 2, 3...)
+  is_bottleneck  BOOLEAN,           -- OEE measured here
+  PRIMARY KEY (line_id, machine_id)
+);
+
+-- Batches are tied to a line (and therefore to a SKU)
+CREATE TABLE batch (
+  batch_id    TEXT PRIMARY KEY,
+  line_id     TEXT NOT NULL,         -- determines SKU
+  sku_id      TEXT NOT NULL,         -- redundant but useful for queries
+  recipe_id   TEXT NOT NULL,
+  start_time  TIMESTAMPTZ,
+  end_time    TIMESTAMPTZ
+);
+```
+
+> **Critical design decision:** In batch, `line_id` and `sku_id` are effectively 1:1. You can derive one from the other. Store both for query convenience, but treat the line as the primary grouping for OEE calculation.
+
+### What This Means for OEE Calculation
+
+1. **OEE is per line, not per machine.** A line's OEE reflects the entire production sequence for that SKU.
+
+2. **The bottleneck determines line OEE.** If the filler (Machine 4) is the slowest machine on Line A, then Line A's OEE is constrained by the filler's speed — even if the mixer is fast.
+
+3. **Shared machines create dependencies.** If Machine 4 is busy with Line B, Line A has to wait. This is an **availability loss** for Line A — but it's a **scheduling problem**, not a machine problem.
+
+4. **Changeover in batch is batch-to-batch, not SKU-to-SKU.** Since each line is dedicated to a SKU, the changeover between batches is CIP cleaning (same product, clean between batches). There's no "switch from SKU-X to SKU-Y" changeover on a dedicated line.
+
+5. **SKU-level OEE comparison is valid.** Since each line = one SKU, you can compare SKU-X OEE vs SKU-Y OEE directly — they're on different lines with different equipment configurations.
+
+### Real-World Example: Ajinomoto Seasoning Plant
+
+```
+Plant: Seasoning Production
+├── Line 1: 500g seasoning packets (SKU-A)
+│   ├── Mixer → Heating → Cooling → Filler → Packer
+│   └── OEE measured at Filler (bottleneck)
+├── Line 2: 1kg seasoning packets (SKU-B)
+│   ├── Mixer → Heating → Cooling → Filler → Packer
+│   └── OEE measured at Filler (bottleneck)
+└── Line 3: Seasoning sachets (SKU-C)
+    ├── Blender → Dryer → Filler → Packer
+    └── OEE measured at Dryer (bottleneck)
+```
+
+- Line 1 and Line 2 share the same equipment type but are **physically separate lines**
+- Line 3 has completely different equipment
+- Each line's OEE is independent — Line 1's downtime doesn't affect Line 2
+- The plant-level OEE is a **weighted average** of all line OEEs
+
+> **Key takeaway:** In batch OEE, always ask: "Which line? Which SKU?" They're the same question. The line IS the SKU's home.
+
+## 3. Why Phases Matter for OEE
 
 The critical insight: **Performance calculation in batch requires knowing which phase you're in.**
 
@@ -84,7 +226,7 @@ Think of batch phases like cooking a Thanksgiving dinner:
 
 Each phase has a **different ideal time**, a **different skill requirement**, and **different failure modes** (burnt turkey vs. lumpy gravy). You can't optimize the meal by just looking at "total cooking time" — you need to know which phase was slow.
 
-## 3. The Batch OEE Waterfall
+## 4. The Batch OEE Waterfall
 
 The standard OEE waterfall adapts for batch:
 
@@ -112,7 +254,7 @@ graph TD
 | **Rework Batch** | Quality Loss | Entire batch reprocessed |
 | **Batch Startup Reject** | Quality Loss | First units of new batch |
 
-## 4. Batch OEE Formulas
+## 5. Batch OEE Formulas
 
 ### Basic Batch Formulas
 
@@ -156,7 +298,7 @@ for each phase i in the batch recipe
 
 > **Critical:** Use **design speed / ideal cycle time** from the recipe or machine spec, NOT historical average. Using standard speed places a false upper limit on improvement.
 
-## 5. Aggregation — Per-Batch to Shift/Line/Plant
+## 6. Aggregation — Per-Batch to Shift/Line/Plant
 
 Individual batch OEE scores must be aggregated to shift, line, or plant level. The method matters.
 
@@ -182,7 +324,7 @@ Line OEE = Σ(batchOEE_i × batchQuantity_i) / Σ(batchQuantity_i)
 | Capacity planning | Weighted by quantity |
 | Revenue analysis | Weighted by batch value |
 
-## 6. Batch-Specific Pitfalls
+## 7. Batch-Specific Pitfalls
 
 1. **Measuring downstream idle equipment** — Apply Theory of Constraints: measure OEE at the bottleneck only. Don't measure OEE on every idle downstream machine.
 
@@ -198,7 +340,7 @@ Line OEE = Σ(batchOEE_i × batchQuantity_i) / Σ(batchQuantity_i)
 
 7. **Equipment dependency** — In batch lines, equipment A feeding B feeding C creates cascading idle time. Measure the constraint, not every machine.
 
-## 7. Real-World Results
+## 8. Real-World Results
 
 | Case | Result | Source |
 |------|--------|--------|
@@ -208,7 +350,7 @@ Line OEE = Σ(batchOEE_i × batchQuantity_i) / Σ(batchQuantity_i)
 
 > **Key insight:** Shaving even a small amount of time from a phase results in more batches per day. 10 batches/day at 144 min each → improve by 10 min → 10.7 batches/day → ~300 extra batches/year.
 
-## 8. Glossary
+## 9. Glossary
 
 | Term | Definition |
 |------|------------|
@@ -223,6 +365,10 @@ Line OEE = Σ(batchOEE_i × batchQuantity_i) / Σ(batchQuantity_i)
 | **Recipe** | The set of instructions defining how to produce a batch — phase sequence, ideal durations, parameters, quality criteria. |
 | **CIP (Clean-In-Place)** | Automated cleaning process between batches, common in food/pharma. |
 | **First Pass Yield (FPY)** | Percentage of batches that pass quality inspection on the first attempt, without rework. |
+| **Production Line** | In batch manufacturing, a dedicated sequence of equipment configured to produce a specific SKU or recipe. Each line is SKU-dedicated. |
+| **SKU (Stock Keeping Unit)** | The unique identifier for a finished product variant. In batch OEE, the SKU determines which line it runs on, which recipe it follows, and which ideal cycle times apply. |
+| **Line Dedication** | The principle that each batch production line is configured for a specific SKU — changeover is batch-to-batch (CIP), not SKU-to-SKU. |
+| **Machine vs. Line** | A machine is a single piece of equipment. A line is a sequence of machines. OEE is measured per line (per SKU), not per machine. |
 
 ## Related
 
