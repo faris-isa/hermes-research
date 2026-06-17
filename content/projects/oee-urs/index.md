@@ -15,7 +15,7 @@ Repository of vendor responses to User Requirement Specifications (URS) for [[oe
 
 ## Clients
 
-### [[Nabati MES Ecosystem|nabati]]
+### [[Nabati MES Ecosystem|nabati/index]]
 
 **Client:** PT. Kaldu Sari Nabati Indonesia
 **Scope:** Full MES Ecosystem — Gedung A Sektor 8, Plant Majalengka
@@ -23,9 +23,11 @@ Repository of vendor responses to User Requirement Specifications (URS) for [[oe
 
 Two-part URS covering MES Application (Production, Inventory, Quality, Platform) and OT Layer (Infrastructure, Network, Data Capture, Governance).
 
-→ [[Nabati MES Ecosystem|nabati]]
+→ [[Part A — MES Application|nabati/part-a]]
+→ [[Part B — OT Layer|nabati/part-b]]
+→ [[Key Abbreviations|nabati/abbreviations]]
 
-### [[Konimex OEE Online|konimex]]
+### [[Konimex OEE Online|konimex/index]]
 
 **Client:** PT Konimex — Produksi Food 2
 **Scope:** OEE Online — Line Hecrona 2
@@ -33,7 +35,12 @@ Two-part URS covering MES Application (Production, Inventory, Quality, Platform)
 
 Real-time OEE monitoring replacing manual EBR recording. PLC/HMI integration via OPC-UA, web dashboards, CPPOB compliance.
 
-→ [[Konimex OEE Online|konimex]]
+→ [[Business Requirements|konimex/business]]
+→ [[Data Requirements|konimex/data]]
+→ [[Design Requirements|konimex/design]]
+→ [[Infrastructure Requirements|konimex/infrastructure]]
+→ [[OEE Formula Reference|konimex/oee-formula]]
+→ [[Acceptance Criteria|konimex/acceptance]]
 
 ## Common URS Patterns
 
