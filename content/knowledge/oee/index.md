@@ -113,13 +113,13 @@ graph LR
     S6 --> S7["7️⃣ Extended<br/>Beyond OEE"]
 ```
 
-1. [[OEE — Overall Equipment Effectiveness|1. OEE Concept]] — What it is, the formula, world-class targets
-2. [[Calculation Methods|2. Calculation Methods]] — Multiple ways to calculate, and why it matters
-3. [[Manufacturing Types|3. Manufacturing Types]] — How context changes everything
-4. [[Batch Phase Tracking|4. Batch Phase Tracking]] — Deep dive into batch OEE: phases, performance, aggregation
-5. [[Mistakes and Hidden Factory|5. Mistakes and Hidden Factory]] — Where the real value is
-6. [[Improvement|6. Improvement]] — What to do after you find the problems
-7. [[Extended Metrics|7. Extended Metrics]] — TEEP, OAE, OLE — when OEE isn't enough
+1. **OEE Concept** — What it is, the formula, world-class targets
+2. **Calculation Methods** — Multiple ways to calculate, and why it matters
+3. **Manufacturing Types** — How context changes everything
+4. **Batch Phase Tracking** — Deep dive into batch OEE: phases, performance, aggregation
+5. **Mistakes and Hidden Factory** — Where the real value is
+6. **Improvement** — What to do after you find the problems
+7. **Extended Metrics** — TEEP, OAE, OLE — when OEE isn't enough
 
 > **Tip:** If you're building an OEE system, read 1–4 first. If you're debugging bad OEE numbers, skip to 5. If you need to justify OEE investment, start with the financial section above. **If you're working with batch production**, section 4 is essential reading.
 
