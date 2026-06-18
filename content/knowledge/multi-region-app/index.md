@@ -18,7 +18,7 @@ tags:
 
 ---
 
-## When Multi-Region Makes Sense
+## 1. When Multi-Region Makes Sense
 
 | Signal | Single Region OK | Multi-Region Needed |
 |--------|-------------------|---------------------|
@@ -31,11 +31,11 @@ tags:
 | RPO = minutes acceptable | ✓ | |
 | RPO = seconds or zero | | ✓ |
 
-**Key insight:** Most applications start single-region. Multi-region is an evolution, not a starting point.
+> **Key insight:** Most applications start single-region. Multi-region is an evolution, not a starting point.
 
 ---
 
-## Deployment Topologies
+## 2. Deployment Topologies
 
 Three main patterns, each with different trade-offs:
 
@@ -52,9 +52,7 @@ graph LR
 ```
 
 **Pros:** Maximum availability, lowest latency for users near each region, no failover delay.
-
 **Cons:** Conflict resolution is hard. Every write can happen anywhere. Data must converge.
-
 **Best for:** Read-heavy apps with eventual consistency tolerance (social media, content delivery).
 
 ### Active-Passive (Hot Standby)
@@ -70,9 +68,7 @@ graph LR
 ```
 
 **Pros:** No conflict resolution needed. Simple data model. Fast failover.
-
 **Cons:** Wasted capacity in passive region. Failover still takes seconds to minutes.
-
 **Best for:** Traditional databases, transactional systems, when consistency > availability.
 
 ### Active-Warm
@@ -88,14 +84,14 @@ graph LR
 ```
 
 **Pros:** Better cost than active-active. Faster recovery than active-passive.
-
 **Cons:** Cold start for traffic ramp-up. Partial capacity may not handle full load immediately.
-
 **Best for:** Cost-sensitive multi-region where you want some availability benefit without full active-active cost.
+
+→ Deep dive: [[Deployment Topologies]]
 
 ---
 
-## Choosing a Topology
+## 3. Choosing a Topology
 
 ```mermaid
 graph TD
@@ -108,7 +104,7 @@ graph TD
 
 ---
 
-## Data Replication
+## 4. Data Replication
 
 The hardest part of multi-region. Your choice here determines everything else.
 
@@ -145,9 +141,13 @@ Write committed locally + at least one other region acknowledges before confirmi
 
 **Use when:** You want better guarantees than async but can't pay the full sync cost.
 
+> **Key insight:** Your replication strategy determines everything else — topology, conflict resolution, failover behavior, and cost. Solve data first.
+
+→ Deep dive: [[Data Replication Strategies]]
+
 ---
 
-## Conflict Resolution
+## 5. Conflict Resolution
 
 When two regions accept the same write simultaneously, conflicts arise.
 
@@ -174,7 +174,7 @@ Data structures that mathematically guarantee convergence without coordination.
 
 ---
 
-## Traffic Routing
+## 6. Traffic Routing
 
 How users reach the right region.
 
@@ -210,9 +210,11 @@ Run logic at 300+ edge locations. Data stays in origin regions, logic is everywh
 - **Cons:** Limited runtime (Cloudflare Workers, Vercel Edge Functions). State must go to origin.
 - **Use when:** Auth, personalization, A/B testing, API gateway logic
 
+→ Deep dive: [[Traffic Routing and Latency]]
+
 ---
 
-## Failure Modes
+## 7. Failure Modes
 
 ### Regional Outage
 
@@ -251,9 +253,11 @@ Users see different data depending on which region they hit.
 - Version vectors to detect stale reads
 - User-facing "data is being synchronized" messages
 
+→ Deep dive: [[Failure Modes and Recovery]]
+
 ---
 
-## Cost Considerations
+## 8. Cost Considerations
 
 Multi-region isn't free. Key cost drivers:
 
@@ -261,16 +265,18 @@ Multi-region isn't free. Key cost drivers:
 |-------------|--------|
 | Compute duplication | 2–3x your single-region cost |
 | Cross-region data transfer | $0.01–0.09/GB depending on provider |
-| Replication infrastructure | Managed services (Cloud SQL, DynamoDB Global Tables) charge for replication |
+| Replication infrastructure | Managed services charge for replication |
 | Load balancing | Global LB costs per million requests |
 | Operational complexity | More monitoring, more runbooks, more on-call surface |
 | Storage duplication | Full data copy in each region |
 
 **Rule of thumb:** Multi-region costs 2–4x a single region, depending on topology and data volume.
 
+→ Deep dive: [[Cost and Trade-offs]]
+
 ---
 
-## Decision Framework
+## 9. Decision Framework
 
 1. **Start single-region.** Get the app working and stable.
 2. **Measure latency.** If users in other geographies complain (>200ms), consider multi-region.
@@ -281,15 +287,45 @@ Multi-region isn't free. Key cost drivers:
 
 ---
 
+## 10. Pitfalls
+
+1. **Starting multi-region too early.** Most apps don't need it. Single-region gives 99.9% availability — that's 8.7 hours downtime/year. Get product-market fit first.
+2. **Ignoring replication cost.** Cross-region data transfer adds up fast. 1 TB/day across continents = ~$2,400/month just for bandwidth.
+3. **Not testing failover.** If you haven't tested region failover, it doesn't work. Schedule quarterly drills.
+4. **Assuming DNS failover is instant.** DNS caching (TTL) means failover takes seconds to minutes, not milliseconds.
+5. **Forgetting the routing SPOF.** The "irony of multi-region" — you distribute everything except the single point of failure in your routing layer.
+6. **Over-engineering conflict resolution.** LWW works for most data. Don't build CRDTs unless you actually have concurrent write conflicts.
+7. **Not sizing surviving regions.** If Region A dies and Region B can't absorb the traffic, you get cascading failure. Each region must handle 100% of traffic.
+
+---
+
+## 11. Glossary
+
+| Term | Definition |
+|------|------------|
+| **RPO (Recovery Point Objective)** | Maximum acceptable data loss measured in time. RPO = 0 means zero data loss. |
+| **RTO (Recovery Time Objective)** | Maximum acceptable time to recover after a failure. |
+| **Active-Active** | All regions serve full traffic simultaneously. No primary — every region is a peer. |
+| **Active-Passive** | One region serves traffic, the other receives replicated data but stays idle until failover. |
+| **Active-Warm** | Primary at full capacity, secondaries at reduced capacity — ready to scale up on failover. |
+| **Split-Brain** | Two regions both think they're primary and accept writes, causing data divergence. |
+| **CRDT** | Conflict-free Replicated Data Type — data structures that guarantee convergence without coordination. |
+| **GeoDNS** | DNS resolution based on client geographic location, routing to nearest region. |
+| **Anycast** | Multiple regions announce the same IP address; BGP routes packets to the nearest. |
+| **Failover** | Switching traffic from a failed region to a healthy one. |
+| **Replication Lag** | Delay between a write in one region and its appearance in another. |
+
+---
+
 ## Deep Dives
 
 - [[Deployment Topologies]] — Active-active, active-passive, active-warm patterns
 - [[Data Replication Strategies]] — Sync, async, semi-sync, CRDTs, conflict resolution
 - [[Traffic Routing and Latency]] — GeoDNS, anycast, global LB, edge compute
 - [[Multi-Region Databases]] — CockroachDB, Spanner, YugabyteDB, DynamoDB Global Tables
-- [[Multi-Region Kubernetes]] — Federation, Istio service mesh, GitOps, blue-green deployments
+- [[Multi-Region Kubernetes & Service Mesh]] — Federation, Istio service mesh, GitOps, blue-green deployments
 - [[Failure Modes and Recovery]] — Regional outages, split-brain, cascading failures
-- [[Testing, Chaos Engineering and Observability]] — Failover testing, LitmusChaos, distributed tracing, SLOs
+- [[Testing, Chaos Engineering & Observability]] — Failover testing, LitmusChaos, distributed tracing, SLOs
 - [[Real-World Case Studies]] — Netflix, Uber, Stripe, Shopify, Discord, Cloudflare, Spanner
 - [[Cost and Trade-offs]] — When multi-region is worth it, cost optimization
 

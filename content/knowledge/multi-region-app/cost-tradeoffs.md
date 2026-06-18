@@ -199,3 +199,17 @@ Track these metrics to validate your multi-region investment:
 - [[Deployment Topologies]] — Topology determines cost structure
 - [[Failure Modes and Recovery]] — The failures that justify multi-region cost
 - [[Designing Data-Intensive Applications]] — Part 06 (Partitioning) for data cost optimization
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Active-Active** | All regions at full capacity — highest cost, highest availability. |
+| **Active-Passive** | One region active, one idle — moderate cost, good availability. |
+| **Active-Warm** | Primary full, secondaries partial — lower cost, scale-up needed on failover. |
+| **Reserved Instance** | 1–3 year commitment for compute resources, 30–60% savings vs on-demand. |
+| **Spot Instance** | Cheap, interruptible compute — 60–80% savings but can be terminated. |
+| **Intelligent Tiering** | Automatically moving cold data to cheaper storage classes. |
+| **Error Budget** | Allowed unreliability before freezing deployments — drives cost decisions. |

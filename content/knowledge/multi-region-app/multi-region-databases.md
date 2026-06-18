@@ -181,3 +181,17 @@ graph TD
 - [[Real-World Case Studies]] — Shopify's YugabyteDB migration, Google Spanner in practice
 - [[Deployment Topologies]] — How databases fit into regional architectures
 - [[Designing Data-Intensive Applications]] — Part 05 (Replication), Part 06 (Partitioning)
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Distributed SQL** | Database that spans multiple nodes/regions while maintaining SQL compatibility. |
+| **Raft Consensus** | Leader-based consensus algorithm for replicated state machines. |
+| **Paxos** | Family of protocols for achieving consensus in distributed systems. |
+| **TrueTime** | Google Spanner's globally synchronized clock API using atomic clocks + GPS. |
+| **Geo-Partitioning** | Placing data in specific regions based on access patterns or compliance requirements. |
+| **xCluster** | YugabyteDB's cross-cluster asynchronous replication for DR and active-active. |
+| **Witness Replica** | Participates in voting but doesn't store full data. Reduces cost while maintaining quorum. |
