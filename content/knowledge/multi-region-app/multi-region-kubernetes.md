@@ -248,3 +248,17 @@ Run independent Kubernetes clusters per region. Federate at the application laye
 - [[Failure Modes and Recovery]] — What happens when a K8s cluster fails
 - [[Real-World Case Studies]] — Shopify's K8s migration, Netflix's approach
 - [[Multi-Region Databases]] — Database layer below K8s
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Federation** | Managing multiple Kubernetes clusters as a single logical entity. |
+| **Service Mesh** | Infrastructure layer for service-to-service communication (mTLS, routing, observability). |
+| **East-West Gateway** | Istio gateway for cross-cluster traffic (as opposed to north-south ingress). |
+| **GitOps** | Using Git as the single source of truth for declarative infrastructure and applications. |
+| **Karmada** | CNCF incubating project for multi-cluster Kubernetes resource propagation. |
+| **ApplicationSet** | ArgoCD resource that generates Applications across multiple clusters automatically. |
+| **PropagationPolicy** | Karmada resource that distributes workloads to member clusters. |

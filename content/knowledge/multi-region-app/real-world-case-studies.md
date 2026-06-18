@@ -251,3 +251,17 @@ Uber replaced the costly uniform 2× capacity model with intelligent tiered appr
 - [[Failure Modes and Recovery]] — How these companies handle failures
 - [[Cost and Trade-offs]] — Uber's cost optimization approach
 - [[Multi-Region Databases]] — Database-specific details for these systems
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Active-Active** | All regions serve full traffic simultaneously (Netflix, Stripe). |
+| **Chaos Kong** | Netflix tool that simulates full regional outage for 24+ hours. |
+| **Idempotency Key** | Globally unique key that prevents duplicate operations on retries/failovers. |
+| **Anti-Entropy** | Background process that compares and reconciles data across regions. |
+| **Merkle Tree** | Hash tree used to efficiently compare large datasets for drift detection. |
+| **Tiered Failover** | Uber's approach of classifying services by criticality for intelligent failover. |
+| **uReplicator** | Uber's open-source Kafka replication tool with zero-data-loss guarantees. |

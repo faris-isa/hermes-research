@@ -265,3 +265,17 @@ C ←→ D
 - [[Deployment Topologies]] — How regions are arranged
 - [[Failure Modes and Recovery]] — What happens when replication breaks
 - [[Designing Data-Intensive Applications]] — Part 05 (Replication) covers this in depth
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Synchronous Replication** | Write committed in all regions before acknowledging to client. RPO = 0. |
+| **Asynchronous Replication** | Write committed locally, replicated in background. RPO depends on lag. |
+| **Semi-Synchronous Replication** | Write committed locally + at least one other region acknowledges. |
+| **CRDT** | Conflict-free Replicated Data Type — guarantees convergence without coordination. |
+| **LWW (Last-Writer-Wins)** | Timestamp-based conflict resolution. Latest write wins, older write is discarded. |
+| **Replication Lag** | Delay between a write in one region and its appearance in another. |
+| **Partitioned Writes** | Avoiding conflicts by design — each region only writes to its own data partition. |

@@ -257,3 +257,17 @@ When multiple users request the same uncached data:
 - [[Deployment Topologies]] — How regions are arranged
 - [[Failure Modes and Recovery]] — What happens when routing fails
 - [[Designing Data-Intensive Applications]] — Part 06 (Partitioning) for data-level routing
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **GeoDNS** | DNS resolution based on client geographic location, routing to nearest region. |
+| **Anycast** | Multiple regions announce the same IP address; BGP routes packets to the nearest. |
+| **Global Load Balancer** | HTTP-level router with health checks, session affinity, and content-based routing. |
+| **Edge Compute** | Running application logic at 300+ edge locations globally, close to users. |
+| **TTL (Time-to-Live)** | How long DNS responses are cached. Lower = faster failover, more DNS queries. |
+| **BGP** | Border Gateway Protocol — internet routing protocol used by anycast. |
+| **mTLS** | Mutual TLS — both client and server authenticate each other. |

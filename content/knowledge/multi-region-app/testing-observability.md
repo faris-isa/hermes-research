@@ -311,3 +311,17 @@ Alert when the SLO is being consumed faster than the error budget allows:
 - [[Deployment Topologies]] — Topology determines testing approach
 - [[Real-World Case Studies]] — Netflix's Chaos Kong, Uber's production drills
 - [[Cost and Trade-offs]] — Cost of monitoring infrastructure
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Chaos Engineering** | Deliberately injecting failures to test system resilience. |
+| **Game Day** | Quarterly team exercise simulating regional outages end-to-end. |
+| **SLO (Service Level Objective)** | Target availability/performance metric (e.g., 99.99% uptime). |
+| **SLI (Service Level Indicator)** | Quantitative measure of service behavior (e.g., request latency). |
+| **Error Budget** | Allowed amount of unreliability before freezing deployments. |
+| **Burn Rate** | Speed at which the error budget is being consumed. |
+| **Steady State Hypothesis** | Expected system behavior during chaos experiments. |

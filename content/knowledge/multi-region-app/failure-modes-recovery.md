@@ -227,3 +227,17 @@ For multi-region outages:
 - [[Traffic Routing and Latency]] — How routing recovers from failure
 - [[Deployment Topologies]] — Topology determines failure blast radius
 - [[Designing Data-Intensive Applications]] — Part 08 (The Trouble with Distributed Systems), Part 09 (Consistency and Consensus)
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Split-Brain** | Two regions both think they're primary and accept writes, causing data divergence. |
+| **Cascading Failure** | One region's failure overloads another, which then fails too. |
+| **Fencing Token** | Monotonically increasing token that prevents stale leaders from writing. |
+| **Circuit Breaker** | Pattern that stops sending requests to a failing service, letting it recover. |
+| **Load Shedding** | Prioritizing critical traffic during overload, rejecting non-critical requests. |
+| **Bulkhead Pattern** | Isolating services so one failure doesn't take down everything. |
+| **TTD (Time to Detect)** | How long before you know a region is down. |

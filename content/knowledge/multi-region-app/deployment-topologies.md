@@ -163,3 +163,16 @@ Most real systems don't use a pure topology. Common hybrids:
 - [[Data Replication Strategies]] — How data flows between regions
 - [[Traffic Routing and Latency]] — How users reach the right region
 - [[Designing Data-Intensive Applications]] — Part 05 (Replication), Part 06 (Partitioning)
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Active-Active** | All regions serve full traffic simultaneously. No primary — every region is a peer. |
+| **Active-Passive** | One region serves traffic, the other receives replicated data but stays idle until failover. |
+| **Active-Warm** | Primary at full capacity, secondaries at reduced capacity — ready to scale up on failover. |
+| **Failover** | Switching traffic from a failed region to a healthy one. |
+| **Hot Standby** | A passive region that receives continuous data replication and can take over quickly. |
+| **Hybrid Topology** | Combining active-active within a geography with active-passive across geographies. |
