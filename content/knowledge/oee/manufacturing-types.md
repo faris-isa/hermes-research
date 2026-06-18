@@ -86,7 +86,7 @@ Batch Timeline:
 4. **Overlapping downtime events** — Correctly attribute to avoid double-counting
 5. **Quality timing lag** — Lab results may come hours after batch completion; hold time = availability loss
 
-> **Developer note:** Batch OEE needs a `batch_id` that links to recipe phases, quality hold events, and lab results. Your data model is more complex than discrete — plan for it.
+> **Developer note:** Batch OEE needs a `batch_id` that links to recipe phases, quality hold events, and lab results. Your data model is more complex than discrete — plan for it. For a deep dive into batch phase tracking concepts, see [[Batch Phase Tracking]].
 
 **Data model for batch:**
 ```sql
