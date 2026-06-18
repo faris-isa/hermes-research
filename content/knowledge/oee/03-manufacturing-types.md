@@ -287,3 +287,26 @@ Pharmaceutical manufacturing adds compliance layers:
 - [[OEE — Overall Equipment Effectiveness]]
 - [[Calculation Methods]]
 - [[Mistakes and Hidden Factory]]
+
+---
+
+## Pitfalls
+
+1. **Using the same OEE formula for all manufacturing types** — batch, continuous, and discrete have fundamentally different time models
+2. **Applying 85% world-class target universally** — it came from discrete automotive, not pharmaceutical batch
+3. **Ignoring operator effectiveness in HMLV** — high-mix environments need OLE alongside OEE
+4. **Averaging station OEE for sequential lines** — the bottleneck determines line output, not the average
+5. **Not adjusting for product mix** — high-mix lines have inherently lower OEE due to changeovers
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Discrete Manufacturing** | Production of distinct, countable items (electronics, automotive parts). |
+| **Batch Manufacturing** | Production in defined quantities through sequential phases (pharma, food, chemicals). |
+| **Continuous Manufacturing** | Non-stop production of flow materials (paper, steel, chemicals). |
+| **HMLV** | High-Mix Low-Volume — many product variants, small batch sizes. |
+| **OLE** | Overall Labor Effectiveness — measures operator productivity separately from machine OEE. |
+| **Changeover** | Time lost switching between products — major OEE driver in high-mix environments. |

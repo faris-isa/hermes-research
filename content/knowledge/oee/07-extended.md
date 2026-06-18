@@ -87,3 +87,23 @@ OLE = Availability × Performance × Quality
 
 - [[OEE — Overall Equipment Effectiveness]]
 - [[Improvement]]
+
+---
+
+## Pitfalls
+
+1. **Using TEEP when you mean OEE** — TEEP includes scheduled losses, OEE doesn't
+2. **Ignoring OLE in high-mix environments** — operator effectiveness matters as much as machine effectiveness
+3. **Not knowing which metric to use** — OEE for machine, OLE for operator, TEEP for capacity planning
+4. **Comparing OEE across different manufacturing types** — batch OEE ≠ continuous OEE ≠ discrete OEE
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **TEEP** | Total Effective Equipment Performance — OEE × Utilization. Includes scheduled losses. |
+| **OAE** | Overall Asset Effectiveness — broader than OEE, includes all asset-related losses. |
+| **OLE** | Overall Labor Effectiveness — measures operator productivity separately from machine OEE. |
+| **Utilization** | Planned production time divided by calendar time. Measures how much you use available capacity. |

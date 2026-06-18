@@ -241,3 +241,26 @@ When reviewing an OEE system, check these in order:
 - [[Calculation Methods]]
 - [[Manufacturing Types]]
 - [[Improvement]]
+
+---
+
+## Pitfalls
+
+1. **Misclassifying stops as "planned"** — hiding breakdowns as scheduled maintenance inflates Availability
+2. **Excluding operators from OEE discussions** — operators know the real loss causes, data alone misses context
+3. **Using standard speed instead of design speed** — design speed is the theoretical max, standard is already degraded
+4. **Not tracking the hidden factory** — rework, scrap, and unplanned stops represent real capacity loss
+5. **Focusing only on the biggest loss** — the Pareto principle applies, but small losses compound
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Six Big Losses** | The six categories of OEE loss: breakdown, setup/changeover, minor stops, reduced speed, process defects, startup rejects. |
+| **Hidden Factory** | Capacity lost to rework, scrap, and unplanned stops that doesn't appear in standard reporting. |
+| **Poka-Yoke** | Error-proofing — design that prevents mistakes from occurring. |
+| **First Pass Yield** | Percentage of good parts on first attempt — excludes reworked parts. |
+| **Minor Stop** | Short downtime (<5 min) that doesn't trigger maintenance but adds up significantly. |
+| **Planned Maintenance** | Scheduled maintenance that should NOT count as Availability loss. |

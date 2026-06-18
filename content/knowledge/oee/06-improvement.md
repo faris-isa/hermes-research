@@ -210,3 +210,26 @@ After implementing a countermeasure, measure impact using these signals:
 - [[Mistakes and Hidden Factory]]
 - [[Calculation Methods]]
 - [[Extended Metrics]]
+
+---
+
+## Pitfalls
+
+1. **Jumping to solutions without understanding losses** — fix the biggest loss first, not the easiest one
+2. **Implementing TPM without operator buy-in** — TPM fails without frontline ownership
+3. **Ignoring SMED for changeovers** — changeover reduction is often the fastest OEE win
+4. **Not automating data collection first** — manual data is unreliable and delays improvement cycles
+5. **Treating OEE improvement as a one-time project** — it's a continuous process, not a project with an end date
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **TPM** | Total Productive Maintenance — methodology for maximizing equipment effectiveness through operator involvement. |
+| **SMED** | Single-Minute Exchange of Die — method to reduce changeover time to under 10 minutes. |
+| **Poka-Yoke** | Error-proofing — design that prevents mistakes from occurring. |
+| **Standardized Work** | Documented best practice for each operation — the baseline for improvement. |
+| **Theory of Constraints** | Methodology for identifying and improving the system bottleneck. |
+| **Five Focusing Steps** | TOC process: identify, exploit, subordinate, elevate, repeat. |

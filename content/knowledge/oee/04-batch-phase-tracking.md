@@ -231,3 +231,26 @@ Line OEE = Σ(batchOEE_i × batchQuantity_i) / Σ(batchQuantity_i)
 - [[Calculation Methods]] — Detailed calculation approaches
 - [[Mistakes and Hidden Factory]] — Common errors and untapped capacity
 - [[Improvement Strategies]] — What to do after finding the problems
+
+---
+
+## Pitfalls
+
+1. **Treating batch as continuous** — batch has distinct phases with different purposes, not a single run
+2. **Ignoring idle time between phases** — material waits, quality holds, and handoffs are real losses
+3. **Using wrong aggregation method** — averaging station OEE for a sequential batch line is mathematically wrong
+4. **Not tracking phase transitions** — the "why" of downtime lives in phase transitions, not in aggregate numbers
+5. **Confusing batch size with throughput** — a large batch with poor phase timing produces less than a small efficient batch
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Batch Phase** | A distinct stage in batch production defined by a specific operation (mixing, heating, filling). |
+| **Phase Transition** | The event that marks the end of one phase and the start of another. |
+| **Idle Time** | Non-productive time between phases (material waits, equipment handoffs). |
+| **Quality Hold** | Time waiting for lab results or quality approval before proceeding. |
+| **Batch OEE** | OEE calculated per batch, accounting for phase-specific timing and losses. |
+| **Aggregation Trap** | The error of averaging station OEE for sequential lines instead of using the bottleneck. |
