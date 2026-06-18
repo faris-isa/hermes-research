@@ -204,3 +204,26 @@ This is NOT worse performance — it's accurate measurement revealing real losse
 - [[OEE — Overall Equipment Effectiveness]]
 - [[Manufacturing Types]]
 - [[Mistakes and Hidden Factory]]
+
+---
+
+## Pitfalls
+
+1. **Using historical average instead of design speed** for Ideal Cycle Time — inflates Performance artificially
+2. **Not distinguishing between planned and unplanned stops** — misclassifying downtime skews Availability
+3. **Averaging station OEE for sequential lines** — mathematically wrong, hides bottleneck
+4. **Ignoring rework in Quality** — reworked parts are quality losses, not free
+5. **Performance > 100%** — means your Ideal Cycle Time is wrong, not that the machine is superhuman
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Ideal Cycle Time** | Theoretical fastest time to produce one unit. Use design speed, not historical average. |
+| **Run Time** | Planned production time minus downtime (breakdowns + changeovers). |
+| **Planned Production Time** | Calendar time minus scheduled losses (nights, weekends, no orders). |
+| **First Pass Yield** | Percentage of good parts on first attempt — excludes reworked parts. |
+| **Weighted OEE** | Duration-weighted aggregation across multiple machines or shifts. |
+| **Batch Performance** | Measures speed efficiency for batch processes — three methods exist (ideal duration, nameplate, demonstrated). |

@@ -126,3 +126,17 @@ graph LR
 ---
 
 *Source: Seiichi Nakajima (TPM), Evocon (3,500+ machines, 50+ countries), industry benchmarks.*
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **OEE** | Overall Equipment Effectiveness — the ratio of fully productive time to planned production time. |
+| **Availability** | Run time divided by planned production time. Measures downtime losses. |
+| **Performance** | Actual output rate vs. ideal cycle time. Measures speed losses. |
+| **Quality** | Good parts divided by total parts. Measures defect losses. |
+| **TPM** | Total Productive Maintenance — the methodology from which OEE originates. |
+| **World-Class OEE** | 85% (A=90%, P=95%, Q=99.9%). Derived from Japanese TPM prize winners, 1984. |
+| **Hidden Factory** | Capacity lost to rework, scrap, and unplanned stops that doesn't appear in standard reporting. |
