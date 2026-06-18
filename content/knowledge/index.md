@@ -11,16 +11,14 @@ Domain knowledge and technical references. These are **standalone concepts** —
 
 ## Topics
 
-### [[OEE Knowledge Index]]
+### [[OEE Knowledge Index|1. OEE — Overall Equipment Effectiveness]]
 Complete reference for Overall Equipment Effectiveness:
-- [[OEE Calculation Deep Dive]] — Formulas, hierarchy, aggregation
-- [[Six Big Losses]] — The six categories of production loss
-- [[Hidden Factory]] — Untapped capacity without capital investment
-- [[World-Class OEE and Benchmarks]] — Targets and industry data
-- [[Batch vs Continuous OEE]] — Manufacturing paradigm differences
-- [[Batch OEE Deep Dive]] — Batch-specific calculations and pitfalls
-- [[OEE Improvement Strategies]] — TPM, SMED, error-proofing
-- [[Common OEE Mistakes]] — Calculation pitfalls and measurement errors
+- [[2. OEE Calculation Methods]] — Formulas, hierarchy, aggregation
+- [[3. Manufacturing Types and OEE]] — How batch, discrete, continuous differ
+- [[4. Batch Phase Tracking]] — Batch-specific calculations and pitfalls
+- [[5. Mistakes and Hidden Factory]] — Common errors and untapped capacity
+- [[5. OEE Improvement]] — TPM, SMED, error-proofing
+- [[6. Extended Metrics — TEEP, OAE, OLE]] — When OEE isn't enough
 
 ### [[Designing Data-Intensive Applications]]
 Martin Kleppmann's definitive guide to distributed systems and data-intensive applications:
